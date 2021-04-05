@@ -1,21 +1,23 @@
 {
-	"name": "@urpflanze/[name]",
+	"name": "@urpflanze/animation",
 	"version": "0.0.1",
 	"description": "Urpflanze package",
 	"license": "GPL-3.0-or-later",
-	"docs": "",
+	"docs": "https://github.com/urpflanze-org/animation/blob/master/README.md",
 	"keywords": [
 		"urpflanze",
+		"animation",
+		"easings",
 		"typescript"
 	],
 	"author": "",
 	"homepage": "",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/urpflanze-org/[name].git"
+		"url": "https://github.com/urpflanze-org/animation.git"
 	},
 	"bugs": {
-		"url": "https://github.com/urpflanze-org/[name]/issues",
+		"url": "https://github.com/urpflanze-org/animation/issues",
 		"email": "gennaro.bs@gmail.com"
 	},
 	"funding": [
@@ -44,17 +46,20 @@
 		"build": "tsc",
 		"watch": "tsc --watch",
 		"lint": "eslint src --ext .ts",
-		"prepublishOnly": "npm run build",
-		"generate-docs": "npx generate-docs"
+		"prepublishOnly": "npm run build"
 	},
 	"publishConfig": {},
-	"dependencies": {},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^4.16.1",
-		"@urpflanze/typedoc-docs": "^0.1.13",
 		"eslint": "^7.21.0",
 		"eslint-config-prettier": "^8.1.0",
 		"typescript": "4.2"
 	},
-	"googleAnalyticsID": ""
+	"peerDependencies": {
+		"@urpflanze/color": "^0.0.3",
+		"@urpflanze/core": "^0.4.6"
+	},
+	"dependencies": {
+		"bezier-easing": "^2.1.0"
+	}
 }
