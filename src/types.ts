@@ -102,6 +102,13 @@ export interface ISimpleAnimation {
 	delay?: number
 
 	/**
+	 * Delay of start animation
+	 *
+	 * @order 7
+	 */
+	afterDelay?: number
+
+	/**
 	 * Round value, undefined is no round
 	 * 1 = no decimal (int)
 	 * 10 = 1 decimal

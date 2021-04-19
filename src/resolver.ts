@@ -4,33 +4,61 @@ import { Easings } from './Easings'
 import { ISimpleAnimation, TAnimationTypes, TAnimationFunction } from './types'
 import { createInterpolationCallback } from './utilities'
 
+type TAnimationCallback =
+	| ((currentTime: number | IPropArguments) => string | number | Array<string | number> | undefined)
+	| undefined
+
 function resolver(
-	simpleAnimation: ISimpleAnimation
-): ((currentTime: number) => string | number | Array<string | number> | undefined) | undefined {
+	simpleAnimation: ISimpleAnimation | ((propArguments: IPropArguments) => ISimpleAnimation)
+): TAnimationCallback | ((propArguments: IPropArguments) => string | number | Array<string | number> | undefined) {
+	if (typeof simpleAnimation === 'function') {
+		let lastReturn: string | number | Array<string | number> | undefined
+		return (propArguments: IPropArguments) => {
+			const animation: TAnimationCallback = resolveSimpleAnimation(simpleAnimation(propArguments))
+			if (animation) {
+				const t = animation(propArguments.shape.scene!.currentTime)
+				if (t) {
+					lastReturn = t
+				}
+			}
+			return lastReturn
+		}
+	}
+
+	return resolveSimpleAnimation(simpleAnimation)
+}
+
+function resolveSimpleAnimation(simpleAnimation: ISimpleAnimation): TAnimationCallback {
 	const callback = createInterpolationCallback(simpleAnimation)
 
 	if (callback) {
+		let ended = false
 		let lastReturn: string | number | Array<string | number> | undefined
 
 		const delay = simpleAnimation.delay || 0
-		const realDirection = simpleAnimation.direction || 'normal'
-		const realDuration = (simpleAnimation.duration || 1000) + delay
-		const duration = realDuration * (realDirection === 'alternate' ? 0.5 : 1)
+		const afterDelay = simpleAnimation.afterDelay || 0
+		const direction = simpleAnimation.direction || 'normal'
+		const duration = simpleAnimation.duration || 1000
+		const totalDuration =
+			direction === 'normal'
+				? duration + delay
+				: direction === 'reverse'
+				? duration + delay
+				: duration * 2 + delay + afterDelay
 
-		const loop = simpleAnimation.loop
-			? typeof simpleAnimation.loop === 'number'
-				? realDirection === 'alternate'
-					? simpleAnimation.loop * 2
-					: simpleAnimation.loop
-				: true
-			: false
-		let direction: 'normal' | 'reverse' = realDirection === 'alternate' ? 'normal' : realDirection || 'normal'
+		const loop = typeof simpleAnimation.loop === 'number' ? simpleAnimation.loop : simpleAnimation.loop
+
+		// let direction: 'normal' | 'reverse' = realDirection === 'alternate' ? 'normal' : realDirection || 'normal'
 
 		const animation = resolveAnimationType(simpleAnimation.easing)
 
 		return (
 			propArgumentsOrCurrentTime: IPropArguments | number
 		): string | number | Array<string | number> | undefined => {
+			if (ended) {
+				return lastReturn
+			}
+
 			const currentTime: number =
 				typeof propArgumentsOrCurrentTime === 'number'
 					? propArgumentsOrCurrentTime
@@ -38,26 +66,40 @@ function resolver(
 
 			let elapsed = currentTime
 
-			if (loop) {
-				if (typeof loop === 'number' && elapsed >= duration * loop) {
-					return lastReturn // ended
-				}
-			} else if (realDirection === 'alternate' ? elapsed >= realDuration : elapsed >= duration + delay)
+			if (
+				(typeof loop === 'number' && elapsed >= totalDuration * loop) ||
+				(loop === false && elapsed >= totalDuration)
+			) {
+				ended = true
+				lastReturn = callback(direction === 'normal' ? 1 : 0)
 				return lastReturn // ended
-
-			elapsed = elapsed % duration
-
-			// console.log(elapsed)
-
-			if ((elapsed -= delay) <= 0) return // not started
-
-			if (realDirection === 'alternate') {
-				direction = Math.floor(currentTime / duration) % 2 === 0 ? 'normal' : 'reverse'
 			}
 
-			const animationValue = animation(elapsed, duration)
-			lastReturn = direction === 'normal' ? callback(animationValue) : callback(1 - animationValue)
-			return lastReturn
+			elapsed = elapsed % totalDuration
+
+			if ((elapsed -= delay) <= 0) {
+				lastReturn = callback(0)
+				return lastReturn // not started
+			}
+
+			if (direction === 'alternate') {
+				if (elapsed <= duration + 33) {
+					const animationValue = animation(elapsed > duration ? duration : elapsed, duration)
+					lastReturn = callback(animationValue)
+				} else {
+					elapsed -= duration
+					if ((elapsed -= afterDelay) <= 0) return lastReturn
+					else {
+						const animationValue = animation(elapsed > duration ? duration : elapsed, duration)
+						lastReturn = callback(1 - animationValue)
+					}
+				}
+				return lastReturn
+			} else {
+				const animationValue = animation(elapsed > duration ? duration : elapsed, duration)
+				lastReturn = direction === 'normal' ? callback(animationValue) : callback(1 - animationValue)
+				return lastReturn
+			}
 		}
 	}
 }
@@ -96,28 +138,6 @@ function resolveAnimationType(type?: TAnimationTypes): TAnimationFunction {
 					const easing = Easings[type.type]
 					const overshoot = type.params.overshoot
 					return (elapsed: number, duration: number) => easing(elapsed, 0, 1, duration, overshoot)
-				}
-				case 'spring': {
-					const mass = type.params.mass || 1
-					const stiffness = type.params.stiffness || 100
-					const damping = type.params.damping || 10
-					const velocity = type.params.velocity || 0
-					const w0 = Math.sqrt(stiffness / mass)
-					const zeta = damping / (2 * Math.sqrt(stiffness * mass))
-					const wd = zeta < 1 ? w0 * Math.sqrt(1 - zeta * zeta) : 0
-					const a = 1
-					const b = zeta < 1 ? (zeta * w0 + -velocity) / wd : -velocity + w0
-
-					return (elapsed: number, duration: number) => {
-						let offset = (duration * (elapsed / duration)) / 1000
-						if (zeta < 1) {
-							offset = Math.exp(-offset * zeta * w0) * (a * Math.cos(wd * offset) + b * Math.sin(wd * offset))
-						} else {
-							offset = (a + b * offset) * Math.exp(-offset * w0)
-						}
-						if (offset === 0 || offset === 1) return offset
-						return 1 - offset
-					}
 				}
 				case 'cubicBezier': {
 					const easing = BezierEasing(type.params[0], type.params[1], type.params[2], type.params[3])
