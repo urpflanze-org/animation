@@ -1,16 +1,5 @@
+import { ISimpleAnimation, TAnimation, TAnimationFunction, TInterpolateCallback } from './types'
 import { createInterpolationCallback, resolveAnimationType } from './utilities'
-import { ISimpleAnimation, TAnimationFunction, TInterpolateCallback } from './types'
-
-interface TAnimation {
-	loop: number
-	loopDuration: number
-	direction: 'normal' | 'reverse'
-	started: boolean
-	ended: boolean
-	offset: number
-	value: undefined | number | string | Array<number | string>
-	update: (time: number) => void
-}
 
 interface TBindedAnimationValues {
 	delay: number

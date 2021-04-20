@@ -124,3 +124,14 @@ export interface ISimpleAnimation {
 export type TAnimationFunction = (elapsed: number, duration: number) => number
 
 export type TInterpolateCallback = (offset: number) => number | string | Array<number | string>
+
+export interface TAnimation {
+	loop: number
+	loopDuration: number
+	direction: 'normal' | 'reverse'
+	started: boolean
+	ended: boolean
+	offset: number
+	value: undefined | number | string | Array<number | string>
+	update: (time: number) => void
+}

@@ -1,6 +1,5 @@
-import * as BezierEasing from 'bezier-easing'
 import { IConvertedColor, parseColorAndConvert } from '@urpflanze/color'
-
+import * as BezierEasing from 'bezier-easing'
 import { Easings } from './Easings'
 import { ISimpleAnimation, TAnimationFunction, TAnimationTypes, TInterpolateCallback } from './types'
 
