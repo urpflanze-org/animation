@@ -5,6 +5,14 @@ import { Easings } from './Easings'
 /**
  * @internal
  */
+interface TTypeWave {
+	type: 'wave'
+	params: { phase: number }
+}
+
+/**
+ * @internal
+ */
 interface TTypeEasingElastic {
 	type: 'elasticIn' | 'elasticOut' | 'elasticInOut'
 	params: { amplitude?: number; period?: number }
@@ -21,19 +29,6 @@ interface TTypeEasingBack {
 /**
  * @internal
  */
-interface TTypeSpring {
-	type: 'spring'
-	params: {
-		mass?: number
-		stiffness?: number
-		damping?: number
-		velocity?: number
-	}
-}
-
-/**
- * @internal
- */
 interface TTypeCubicBezier {
 	type: 'cubicBezier'
 	params: [number, number, number, number]
@@ -44,13 +39,12 @@ interface TTypeCubicBezier {
  */
 export type TAnimationTypes =
 	| ((elapsedOffset: number, elapsed: number) => number /* between 0 and 1 */)
-	| 'sin'
-	| 'cos'
+	| 'wave'
+	| TTypeWave
 	| keyof typeof Easings
 	| TTypeEasingElastic
 	| TTypeEasingBack
 	| TTypeCubicBezier
-	| TTypeSpring
 
 //////////////////////////
 
@@ -128,3 +122,5 @@ export interface ISimpleAnimation {
 }
 
 export type TAnimationFunction = (elapsed: number, duration: number) => number
+
+export type TInterpolateCallback = (offset: number) => number | string | Array<number | string>

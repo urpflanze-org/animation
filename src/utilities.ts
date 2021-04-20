@@ -1,5 +1,8 @@
+import * as BezierEasing from 'bezier-easing'
 import { IConvertedColor, parseColorAndConvert } from '@urpflanze/color'
-import { ISimpleAnimation } from './types'
+
+import { Easings } from './Easings'
+import { ISimpleAnimation, TAnimationFunction, TAnimationTypes, TInterpolateCallback } from './types'
 
 export function interpolateColorRGB(start: IConvertedColor, end: IConvertedColor, offset: number): string {
 	const r = start.r + offset * (end.r - start.r)
@@ -25,9 +28,13 @@ export function toArray(value: number | [number, number]): [number, number] {
 	return typeof value === 'number' ? [value, value] : value
 }
 
-export function createInterpolationCallback(
-	simpleAnimation: ISimpleAnimation
-): undefined | ((offset: number) => number | string | Array<number | string>) {
+/**
+ * Return a callback for value interpolation passing offset from 0 to 1
+ *
+ * @param simpleAnimation
+ * @returns
+ */
+export function createInterpolationCallback(simpleAnimation: ISimpleAnimation): undefined | TInterpolateCallback {
 	const from = Array.isArray(simpleAnimation.from) ? simpleAnimation.from : [simpleAnimation.from]
 	const to = Array.isArray(simpleAnimation.to) ? simpleAnimation.to : [simpleAnimation.to]
 	const round = simpleAnimation.round
@@ -67,4 +74,58 @@ export function createInterpolationCallback(
 
 		return values.length === 1 ? values[0] : values
 	}
+}
+
+/**
+ * Return a callback for calculate offset from elapsed time and animation duration
+ *
+ * @param type
+ * @returns
+ */
+export function resolveAnimationType(type?: TAnimationTypes): TAnimationFunction {
+	switch (typeof type) {
+		case 'function':
+			return (elapsed: number, duration: number) =>
+				(type as (elapsedOffset: number, elapsed: number) => number)(elapsed / duration, elapsed)
+		case 'string':
+			switch (type) {
+				case 'wave':
+					return (elapsed: number, duration: number) =>
+						0.5 + Math.sin((elapsed * Math.PI * 2) / duration + Math.PI * 1.5) * 0.5
+				default: {
+					if (type in Easings) {
+						const easing = Easings[type as keyof typeof Easings]
+						return (elapsed: number, duration: number) => easing(elapsed, 0, 1, duration)
+					}
+					return (elapsed: number, duration: number) => Easings.linear(elapsed, 0, 1, duration)
+				}
+			}
+		case 'object':
+			switch (type.type) {
+				case 'wave': {
+					const phase = Math.PI * 1.5 + (type.params?.phase || 0)
+					return (elapsed: number, duration: number) => 0.5 + Math.sin((elapsed * Math.PI * 2) / duration + phase) * 0.5
+				}
+				case 'elasticIn':
+				case 'elasticOut':
+				case 'elasticInOut': {
+					const easing = Easings[type.type]
+					const { amplitude, period } = type.params || {}
+					return (elapsed: number, duration: number) => easing(elapsed, 0, 1, duration, amplitude, period)
+				}
+				case 'backIn':
+				case 'backOut':
+				case 'backInOut': {
+					const easing = Easings[type.type]
+					const overshoot = type.params?.overshoot || undefined
+					return (elapsed: number, duration: number) => easing(elapsed, 0, 1, duration, overshoot)
+				}
+				case 'cubicBezier': {
+					const easing = BezierEasing(type.params[0], type.params[1], type.params[2], type.params[3])
+					return (elapsed: number, duration: number) => easing(elapsed / duration)
+				}
+			}
+	}
+
+	return (elapsed: number, duration: number) => Easings.linear(elapsed, 0, 1, duration)
 }
