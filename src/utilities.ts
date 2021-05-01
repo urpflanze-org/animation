@@ -37,7 +37,7 @@ export function createInterpolationCallback(simpleAnimation: ISimpleAnimation): 
 	const from = Array.isArray(simpleAnimation.from) ? simpleAnimation.from : [simpleAnimation.from]
 	const to = Array.isArray(simpleAnimation.to) ? simpleAnimation.to : [simpleAnimation.to]
 	const round = simpleAnimation.round
-	const colorInterpolation = simpleAnimation.colorTransitionMode == 'hue' ? interpolateColorHSL : interpolateColorRGB
+	const colorInterpolation = simpleAnimation.colorTransitionMode === 'hue' ? interpolateColorHSL : interpolateColorRGB
 
 	if (from.length !== to.length) return
 
@@ -46,7 +46,7 @@ export function createInterpolationCallback(simpleAnimation: ISimpleAnimation): 
 	for (let i = 0, len = from.length; i < len; i++) {
 		if (typeof from[i] !== typeof to[i]) {
 			console.warn('[@urpflanze/animation]: `from` and `to` values mismatch')
-			return
+			return undefined
 		} else {
 			if (typeof from[i] !== 'string') {
 				const a = from[i] as number,
@@ -54,15 +54,20 @@ export function createInterpolationCallback(simpleAnimation: ISimpleAnimation): 
 
 				callbacks.push(
 					typeof round !== 'undefined'
-						? (offset: number) => Math.round((a + offset * (b - a)) * round) / round
-						: (offset: number) => a + offset * (b - a)
+						? (offset: number) =>
+								offset === 1 ? b : offset === 0 ? a : Math.round((a + offset * (b - a)) * round) / round
+						: (offset: number) => (offset === 1 ? b : offset === 0 ? a : a + offset * (b - a))
 				)
 			} else {
-				const a = parseColorAndConvert(from[i] as string)
-				const b = parseColorAndConvert(to[i] as string)
+				const a = from[i] as string
+				const b = to[i] as string
+				const parsed_a = parseColorAndConvert(a)
+				const parsed_b = parseColorAndConvert(b)
 
-				if (typeof a !== 'undefined' && typeof b !== 'undefined') {
-					callbacks.push((offset: number) => colorInterpolation(a, b, offset))
+				if (typeof parsed_a !== 'undefined' && typeof parsed_b !== 'undefined') {
+					callbacks.push((offset: number) =>
+						offset === 1 ? b : offset === 0 ? a : colorInterpolation(parsed_a, parsed_b, offset)
+					)
 				}
 			}
 		}

@@ -39,18 +39,19 @@ export function clock(
 
 	if (direction === 'alternate') {
 		if (time <= duration) {
+			// normal
 			return time
 		} else {
+			// reverse
 			time -= duration
 			if ((time -= afterDelay) >= 0) {
-				return duration - (time > duration ? duration : time)
+				return duration - (time >= duration ? duration : time)
 			}
+			return duration
 		}
 	} else {
 		return time >= duration ? duration : time
 	}
-
-	return time
 }
 
 /**

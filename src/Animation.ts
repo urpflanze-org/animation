@@ -92,20 +92,21 @@ function createUpdate(
 				animation.direction = 'normal'
 				// animation.offset = animationFunction(time > duration ? duration : time, duration)
 				animation.offset = animationFunction(time, duration)
-				animation.value = interpolate(animation.offset)
 			} else {
 				animation.direction = 'reverse'
 				time -= duration
 				// wait afterDelay
 				if ((time -= afterDelay) >= 0) {
 					animation.offset = 1 - animationFunction(time >= duration ? duration : time, duration)
-					animation.value = interpolate(animation.offset)
+				} else {
+					animation.offset = 1
 				}
 			}
 		} else {
 			const animationValue = animationFunction(time >= duration ? duration : time, duration)
 			animation.offset = direction === 'normal' ? animationValue : 1 - animationValue
-			animation.value = interpolate(animation.offset)
 		}
+
+		animation.value = interpolate(animation.offset)
 	}
 }
