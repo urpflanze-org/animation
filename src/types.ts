@@ -1,4 +1,4 @@
-import { IPropArguments } from '@urpflanze/core'
+import type { IPropArguments } from '@urpflanze/core'
 import { Easings } from './Easings'
 
 //////////////////////////
