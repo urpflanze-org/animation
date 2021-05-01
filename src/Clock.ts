@@ -1,4 +1,4 @@
-import { PI2 } from '@urpflanze/core'
+const PI2 = Math.PI * 2
 
 /**
  *
