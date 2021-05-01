@@ -1,3 +1,4 @@
+import { IPropArguments } from '@urpflanze/core'
 import { Easings } from './Easings'
 
 //////////////////////////
@@ -135,3 +136,7 @@ export interface TAnimation {
 	value: undefined | number | string | Array<number | string>
 	update: (time: number) => void
 }
+
+export type TAnimationCallback =
+	| ((currentTime: number | IPropArguments) => string | number | Array<string | number> | undefined)
+	| undefined
