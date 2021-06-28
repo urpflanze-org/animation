@@ -4,8 +4,8 @@ const PI2 = Math.PI * 2
  *
  *
  * @export
- * @param {number} time
- * @param {number} duration
+ * @param {number} time Current time
+ * @param {number} duration Clock duration
  * @param {(number | boolean)} [loop=true]
  * @param {('normal' | 'reverse' | 'alternate')} [direction='alternate']
  * @param {number} [delay=0]
@@ -55,31 +55,33 @@ export function clock(
 }
 
 /**
- *
+ * Return sin of period 'durate' in time 'time'
  *
  * @export
  * @param {number} time
  * @param {number} durate
+ * @param {number} phase
  * @param {boolean} [normalize=false]
  * @return {*}  {number}
  */
-export function sinp(time: number, durate: number, normalize = false): number {
-	const value = Math.sin((time * PI2) / durate)
+export function sinp(time: number, durate: number, phase = 0, normalize = false): number {
+	const value = Math.sin((time * PI2) / durate + phase)
 
 	return normalize ? 0.5 + value * 0.5 : value
 }
 
 /**
- *
+ * Return cos of period 'durate' in time 'time'
  *
  * @export
  * @param {number} time
  * @param {number} durate
+ * @param {number} phase
  * @param {boolean} [normalize=false]
  * @return {*}  {number}
  */
-export function cosp(time: number, durate: number, normalize = false): number {
-	const value = Math.cos((time * PI2) / durate)
+export function cosp(time: number, durate: number, phase = 0, normalize = false): number {
+	const value = Math.cos((time * PI2) / durate + phase)
 
 	return normalize ? 0.5 + value * 0.5 : value
 }

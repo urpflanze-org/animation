@@ -6,7 +6,7 @@ import { Easings } from './Easings'
 /**
  * @internal
  */
-interface TTypeWave {
+interface TWaveInterpolator {
 	type: 'wave'
 	params: { phase: number }
 }
@@ -14,7 +14,7 @@ interface TTypeWave {
 /**
  * @internal
  */
-interface TTypeEasingElastic {
+interface TElasticInterpolator {
 	type: 'elasticIn' | 'elasticOut' | 'elasticInOut'
 	params: { amplitude?: number; period?: number }
 }
@@ -22,7 +22,7 @@ interface TTypeEasingElastic {
 /**
  * @internal
  */
-interface TTypeEasingBack {
+interface TBackInterpolator {
 	type: 'backIn' | 'backOut' | 'backInOut'
 	params: { overshoot?: number }
 }
@@ -30,7 +30,7 @@ interface TTypeEasingBack {
 /**
  * @internal
  */
-interface TTypeCubicBezier {
+interface TCubicBezierInterpolator {
 	type: 'cubicBezier'
 	params: [number, number, number, number]
 }
@@ -38,14 +38,14 @@ interface TTypeCubicBezier {
 /**
  * @internal
  */
-export type TAnimationTypes =
+export type TInterpolator =
 	| ((elapsedOffset: number, elapsed: number) => number /* between 0 and 1 */)
 	| 'wave'
-	| TTypeWave
+	| TWaveInterpolator
 	| keyof typeof Easings
-	| TTypeEasingElastic
-	| TTypeEasingBack
-	| TTypeCubicBezier
+	| TElasticInterpolator
+	| TBackInterpolator
+	| TCubicBezierInterpolator
 
 //////////////////////////
 
@@ -87,7 +87,7 @@ export interface ISimpleAnimation {
 	/**
 	 * Type of animation
 	 */
-	easing?: TAnimationTypes
+	interpolator?: TInterpolator
 
 	/**
 	 * Delay of start animation

@@ -1,1 +1,1 @@
-# Urpflanze template repository
+# @urpflanze/animation
