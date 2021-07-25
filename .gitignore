@@ -3,6 +3,7 @@ node_modules
 dist
 testing 
 .vscode
+.nyc_output
 package-lock.json
 
 
