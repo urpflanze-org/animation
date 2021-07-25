@@ -10,8 +10,12 @@
 		"easings",
 		"typescript"
 	],
-	"author": "",
-	"homepage": "",
+	"author": {
+		"name": "Gennaro Bosone",
+		"email": "gennaro.bs@gmail.com",
+		"url": "https://github.com/genbs"
+	},
+	"homepage": "https://github.com/urpflanze-org/animation",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/urpflanze-org/animation.git"
@@ -34,8 +38,10 @@
 			"url": "https://etherscan.io/address/0x9086c4bb7015c1d6dc79162d02e7e1239c982c01"
 		}
 	],
-	"main": "dist",
-	"types": "dist/index.d.ts",
+	"module": "build/esm/urpflanze-animation.min.js",
+	"browser": "build/umd/urpflanze-animation.min.js",
+	"main": "dist/cjs/index.js",
+	"types": "dist/cjs/index.d.ts",
 	"files": [
 		"dist",
 		"package.json",
@@ -43,23 +49,31 @@
 		"LICENSE"
 	],
 	"scripts": {
-		"build": "tsc",
-		"watch": "tsc --watch",
+		"build-browser": "npx webpack --config webpack.config.js",
+		"build": "tsc --p tsconfig.json && tsc --p tsconfig-esm.json && npm run build-browser",
 		"lint": "eslint src --ext .ts",
-		"prepublishOnly": "npm run build"
+		"prepublishOnly": "npm run build",
+		"test": "tap",
+		"release": "standard-version",
+		"release:minor": "standard-version --release-as minor",
+		"release:patch": "standard-version --release-as patch",
+		"release:major": "standard-version --release-as major"
 	},
-	"publishConfig": {},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^4.16.1",
 		"eslint": "^7.21.0",
 		"eslint-config-prettier": "^8.1.0",
-		"typescript": "4.2"
+		"tap": "^15.0.9",
+		"typescript": "4.2",
+		"webpack": "^5.46.0",
+		"webpack-cli": "^4.7.2"
 	},
 	"peerDependencies": {
 		"@urpflanze/color": "^0.0.3",
-		"@urpflanze/core": "^0.4.6"
+		"@urpflanze/core": "^0.5.5"
 	},
 	"dependencies": {
-		"bezier-easing": "^2.1.0"
+		"bezier-easing": "^2.1.0",
+		"standard-version": "^9.3.1"
 	}
 }
