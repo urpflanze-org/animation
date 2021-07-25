@@ -56,7 +56,7 @@ export interface ISimpleAnimation {
 	 * hsla([0-360], [0-100]%, [0-100]%, 0-1)
 	 * @order 1
 	 */
-	from: Array<number | string>
+	from: number | string | Array<number | string>
 
 	/**
 	 * Supported color string format:
@@ -64,7 +64,7 @@ export interface ISimpleAnimation {
 	 * hsla([0-360], [0-100]%, [0-100]%, 0-1)
 	 * @order 2
 	 */
-	to: Array<number | string>
+	to: number | string | Array<number | string>
 
 	/**
 	 * Duration in millisecond
@@ -90,14 +90,14 @@ export interface ISimpleAnimation {
 	interpolator?: TInterpolator
 
 	/**
-	 * Delay of start animation
+	 * Delay of animation start
 	 *
 	 * @order 7
 	 */
 	delay?: number
 
 	/**
-	 * Delay of start animation
+	 * Delay after animation end loop
 	 *
 	 * @order 7
 	 */

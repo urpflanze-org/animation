@@ -57,7 +57,7 @@ export function createInterpolationCallback(simpleAnimation: ISimpleAnimation): 
 }
 
 /**
- * Return a callback for calculate offset from elapsed time and animation duration
+ * Return a callback for calculate offset (0 to 1) from elapsed time and animation duration
  *
  * @param type
  * @returns

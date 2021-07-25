@@ -82,14 +82,14 @@ function createUpdate(
 
 	return (time: number) => {
 		// Check animation is ended
+
 		if (
 			(typeof loop === 'number' && time >= totalDuration * loop) ||
 			(loop === false && time >= bindedValues.totalDuration)
 		) {
 			animation.started = false
 			animation.ended = true
-			// animation.offset = direction === 'normal' ? 1 : 0
-			animation.offset = animationFunction(direction === 'normal' ? 1 : 0, duration)
+			animation.offset = animationFunction(direction === 'normal' ? duration : 0, duration)
 			animation.value = interpolate(animation.offset)
 			return
 		}
@@ -99,7 +99,6 @@ function createUpdate(
 
 		if ((time -= delay) <= 0) {
 			animation.started = false
-			// animation.offset = 0
 			animation.offset = animationFunction(0, duration)
 			animation.value = interpolate(animation.offset)
 			return
@@ -110,7 +109,6 @@ function createUpdate(
 		if (direction === 'alternate') {
 			if (time <= duration) {
 				animation.direction = 'normal'
-				// animation.offset = animationFunction(time > duration ? duration : time, duration)
 				animation.offset = animationFunction(time, duration)
 			} else {
 				animation.direction = 'reverse'

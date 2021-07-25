@@ -3,36 +3,30 @@ import { createAnimation } from './createAnimation'
 import { ISimpleAnimation, TAnimation } from './types'
 import { interpolateColorRGB } from './utilities'
 
+/**
+ *
+ *
+ * @export
+ * @param {Array<ISimpleAnimation>} simpleAnimations
+ * @return {*}  {(((currentTime: number) => string | number | Array<string | number> | undefined) | undefined)}
+ */
 export function composeAnimations(
 	simpleAnimations: Array<ISimpleAnimation>
 ): ((currentTime: number) => string | number | Array<string | number> | undefined) | undefined {
 	const animations = simpleAnimations.map(createAnimation).filter(a => typeof a !== 'undefined') as Array<TAnimation>
 	const animationsLength = animations.length
 
-	let value: string | number | Array<string | number> | undefined = undefined
-
 	if (animationsLength > 0) {
 		return (currentTime: number): string | number | Array<string | number> | undefined => {
-			let first = true
-			let prevAnimationValue: string | number | Array<string | number> | undefined = undefined
+			let value: string | number | Array<string | number> | undefined = undefined
 
 			for (let i = 0; i < animationsLength; i++) {
 				const animation = animations[i]
 				animation.update(currentTime)
-
-				if (animation.started && !animation.ended) {
-					if (first) {
-						value = animation.value
-						first = false
-						prevAnimationValue = value
-					} else {
-						value = interpolate(prevAnimationValue!, animation.value!)
-					}
-				}
+				value = typeof value === 'undefined' ? animation.value : interpolate(value!, animation.value!)
 			}
-			return value
 
-			// return animation.value
+			return value
 		}
 	}
 }

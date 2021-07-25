@@ -5,279 +5,281 @@
  */
 const Easings = {
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	linear: (time: number, start: number, end: number, duration: number): number => (end * time) / duration + start,
+	linear: (timeOrOffset: number, start: number, end: number, duration = 1): number =>
+		(end * timeOrOffset) / duration + start,
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	quadraticIn: (time: number, start: number, end: number, duration: number): number => {
-		time /= duration
-		return end * time * time + start
+	quadraticIn: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		timeOrOffset /= duration
+		return end * timeOrOffset * timeOrOffset + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	quadraticOut: (time: number, start: number, end: number, duration: number): number => {
-		time /= duration
-		return -end * time * (time - 2) + start
+	quadraticOut: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		timeOrOffset /= duration
+		return -end * timeOrOffset * (timeOrOffset - 2) + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	quadraticInOut: (time: number, start: number, end: number, duration: number): number => {
-		time /= duration / 2
-		if (time < 1) return (end / 2) * time * time + start
-		time--
-		return (-end / 2) * (time * (time - 2) - 1) + start
+	quadraticInOut: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		timeOrOffset /= duration / 2
+		if (timeOrOffset < 1) return (end / 2) * timeOrOffset * timeOrOffset + start
+		timeOrOffset--
+		return (-end / 2) * (timeOrOffset * (timeOrOffset - 2) - 1) + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	cubicIn: (time: number, start: number, end: number, duration: number): number => {
-		time /= duration
-		return end * time * time * time + start
+	cubicIn: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		timeOrOffset /= duration
+		return end * timeOrOffset * timeOrOffset * timeOrOffset + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	cubicOut: (time: number, start: number, end: number, duration: number): number => {
-		time /= duration
-		time--
-		return end * (time * time * time + 1) + start
+	cubicOut: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		timeOrOffset /= duration
+		timeOrOffset--
+		return end * (timeOrOffset * timeOrOffset * timeOrOffset + 1) + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	cubicInOut: (time: number, start: number, end: number, duration: number): number => {
-		time /= duration / 2
-		if (time < 1) return (end / 2) * time * time * time + start
-		time -= 2
-		return (end / 2) * (time * time * time + 2) + start
+	cubicInOut: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		timeOrOffset /= duration / 2
+		if (timeOrOffset < 1) return (end / 2) * timeOrOffset * timeOrOffset * timeOrOffset + start
+		timeOrOffset -= 2
+		return (end / 2) * (timeOrOffset * timeOrOffset * timeOrOffset + 2) + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	quarticIn: (time: number, start: number, end: number, duration: number): number => {
-		time /= duration
-		return end * time * time * time * time + start
+	quarticIn: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		timeOrOffset /= duration
+		return end * timeOrOffset * timeOrOffset * timeOrOffset * timeOrOffset + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	quarticOut: (time: number, start: number, end: number, duration: number): number => {
-		time /= duration
-		time--
-		return -end * (time * time * time * time - 1) + start
+	quarticOut: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		timeOrOffset /= duration
+		timeOrOffset--
+		return -end * (timeOrOffset * timeOrOffset * timeOrOffset * timeOrOffset - 1) + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	quarticInOut: (time: number, start: number, end: number, duration: number): number => {
-		time /= duration / 2
-		if (time < 1) return (end / 2) * time * time * time * time + start
-		time -= 2
-		return (-end / 2) * (time * time * time * time - 2) + start
+	quarticInOut: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		timeOrOffset /= duration / 2
+		if (timeOrOffset < 1) return (end / 2) * timeOrOffset * timeOrOffset * timeOrOffset * timeOrOffset + start
+		timeOrOffset -= 2
+		return (-end / 2) * (timeOrOffset * timeOrOffset * timeOrOffset * timeOrOffset - 2) + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	quinticIn: (time: number, start: number, end: number, duration: number): number => {
-		time /= duration
-		return end * time * time * time * time * time + start
+	quinticIn: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		timeOrOffset /= duration
+		return end * timeOrOffset * timeOrOffset * timeOrOffset * timeOrOffset * timeOrOffset + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	quinticOut: (time: number, start: number, end: number, duration: number): number => {
-		time /= duration
-		time--
-		return end * (time * time * time * time * time + 1) + start
+	quinticOut: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		timeOrOffset /= duration
+		timeOrOffset--
+		return end * (timeOrOffset * timeOrOffset * timeOrOffset * timeOrOffset * timeOrOffset + 1) + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	quinticInOut: (time: number, start: number, end: number, duration: number): number => {
-		time /= duration / 2
-		if (time < 1) return (end / 2) * time * time * time * time * time + start
-		time -= 2
-		return (end / 2) * (time * time * time * time * time + 2) + start
+	quinticInOut: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		timeOrOffset /= duration / 2
+		if (timeOrOffset < 1)
+			return (end / 2) * timeOrOffset * timeOrOffset * timeOrOffset * timeOrOffset * timeOrOffset + start
+		timeOrOffset -= 2
+		return (end / 2) * (timeOrOffset * timeOrOffset * timeOrOffset * timeOrOffset * timeOrOffset + 2) + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	sinusoidalIn: (time: number, start: number, end: number, duration: number): number => {
-		return -end * Math.cos((time / duration) * (Math.PI / 2)) + end + start
+	sinusoidalIn: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		return -end * Math.cos((timeOrOffset / duration) * (Math.PI / 2)) + end + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	sinusoidalOut: (time: number, start: number, end: number, duration: number): number => {
-		return end * Math.sin((time / duration) * (Math.PI / 2)) + start
+	sinusoidalOut: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		return end * Math.sin((timeOrOffset / duration) * (Math.PI / 2)) + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	sinusoidalInOut: (time: number, start: number, end: number, duration: number): number => {
-		return (-end / 2) * (Math.cos((Math.PI * time) / duration) - 1) + start
+	sinusoidalInOut: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		return (-end / 2) * (Math.cos((Math.PI * timeOrOffset) / duration) - 1) + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	exponentialIn: (time: number, start: number, end: number, duration: number): number => {
-		return end * Math.pow(2, 10 * (time / duration - 1)) + start
+	exponentialIn: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		return end * Math.pow(2, 10 * (timeOrOffset / duration - 1)) + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	exponentialOut: (time: number, start: number, end: number, duration: number): number => {
-		return end * (-Math.pow(2, (-10 * time) / duration) + 1) + start
+	exponentialOut: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		return end * (-Math.pow(2, (-10 * timeOrOffset) / duration) + 1) + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	exponentialInOut: (time: number, start: number, end: number, duration: number): number => {
-		time /= duration / 2
-		if (time < 1) return (end / 2) * Math.pow(2, 10 * (time - 1)) + start
-		time--
-		return (end / 2) * (-Math.pow(2, -10 * time) + 2) + start
+	exponentialInOut: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		timeOrOffset /= duration / 2
+		if (timeOrOffset < 1) return (end / 2) * Math.pow(2, 10 * (timeOrOffset - 1)) + start
+		timeOrOffset--
+		return (end / 2) * (-Math.pow(2, -10 * timeOrOffset) + 2) + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	circularIn: (time: number, start: number, end: number, duration: number): number => {
-		time /= duration
-		return -end * (Math.sqrt(1 - time * time) - 1) + start
+	circularIn: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		timeOrOffset /= duration
+		return -end * (Math.sqrt(1 - timeOrOffset * timeOrOffset) - 1) + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	circularOut: (time: number, start: number, end: number, duration: number): number => {
-		time /= duration
-		time--
-		return end * Math.sqrt(1 - time * time) + start
+	circularOut: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		timeOrOffset /= duration
+		timeOrOffset--
+		return end * Math.sqrt(1 - timeOrOffset * timeOrOffset) + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @returns {number}
 	 */
-	circularInOut: (time: number, start: number, end: number, duration: number): number => {
-		time /= duration / 2
-		if (time < 1) return (-end / 2) * (Math.sqrt(1 - time * time) - 1) + start
-		time -= 2
-		return (end / 2) * (Math.sqrt(1 - time * time) + 1) + start
+	circularInOut: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		timeOrOffset /= duration / 2
+		if (timeOrOffset < 1) return (-end / 2) * (Math.sqrt(1 - timeOrOffset * timeOrOffset) - 1) + start
+		timeOrOffset -= 2
+		return (end / 2) * (Math.sqrt(1 - timeOrOffset * timeOrOffset) + 1) + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
@@ -285,18 +287,11 @@ const Easings = {
 	 * @param {number} period (optional)
 	 * @return {number}
 	 */
-	elasticIn: function (
-		time: number,
-		start: number,
-		end: number,
-		duration: number,
-		amplitude = 1,
-		period = 0.5
-	): number {
-		if (time === 0) {
+	elasticIn: (timeOrOffset: number, start: number, end: number, duration = 1, amplitude = 1, period = 0.5): number => {
+		if (timeOrOffset === 0) {
 			return start
 		}
-		if ((time /= duration) === 1) {
+		if ((timeOrOffset /= duration) === 1) {
 			return start + end
 		}
 
@@ -310,12 +305,16 @@ const Easings = {
 		}
 
 		return (
-			-(amplitude * Math.pow(2, 10 * (time -= 1)) * Math.sin(((time * duration - s) * (2 * Math.PI)) / period)) + start
+			-(
+				amplitude *
+				Math.pow(2, 10 * (timeOrOffset -= 1)) *
+				Math.sin(((timeOrOffset * duration - s) * (2 * Math.PI)) / period)
+			) + start
 		)
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
@@ -323,18 +322,11 @@ const Easings = {
 	 * @param {number} period (optional)
 	 * @return {number}
 	 */
-	elasticOut: function (
-		time: number,
-		start: number,
-		end: number,
-		duration: number,
-		amplitude = 1,
-		period = 0.5
-	): number {
-		if (time === 0) {
+	elasticOut: (timeOrOffset: number, start: number, end: number, duration = 1, amplitude = 1, period = 0.5): number => {
+		if (timeOrOffset === 0) {
 			return start
 		}
-		if ((time /= duration) === 1) {
+		if ((timeOrOffset /= duration) === 1) {
 			return start + end
 		}
 
@@ -348,95 +340,110 @@ const Easings = {
 		}
 
 		return (
-			amplitude * Math.pow(2, -10 * time) * Math.sin(((time * duration - s) * (2 * Math.PI)) / period) + end + start
-		)
-	},
-
-	/**
-	 * @param {number} time current time
-	 * @param {number} start start value
-	 * @param {number} end end value
-	 * @param {number} duration duration
-	 * @param {number} amplitude (optional)
-	 * @param {number} period (optional)
-	 * @return {number}
-	 */
-	elasticInOut: function (
-		time: number,
-		start: number,
-		end: number,
-		duration: number,
-		amplitude = 1,
-		period = 0.5
-	): number {
-		if (time === 0) {
-			return start
-		}
-
-		if ((time /= duration / 2) === 2) {
-			return start + end
-		}
-
-		period *= duration
-		let s = 0
-		if (amplitude < Math.abs(end)) {
-			amplitude = end
-			s = period / 4
-		} else {
-			s = (period / (2 * Math.PI)) * Math.asin(end / amplitude)
-		}
-
-		if (time < 1) {
-			return (
-				-0.5 *
-					(amplitude * Math.pow(2, 10 * (time -= 1)) * Math.sin(((time * duration - s) * (2 * Math.PI)) / period)) +
-				start
-			)
-		}
-		return (
-			amplitude * Math.pow(2, -10 * (time -= 1)) * Math.sin(((time * duration - s) * (2 * Math.PI)) / period) * 0.5 +
+			amplitude * Math.pow(2, -10 * timeOrOffset) * Math.sin(((timeOrOffset * duration - s) * (2 * Math.PI)) / period) +
 			end +
 			start
 		)
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
+	 * @param {number} start start value
+	 * @param {number} end end value
+	 * @param {number} duration duration
+	 * @param {number} amplitude (optional)
+	 * @param {number} period (optional)
+	 * @return {number}
+	 */
+	elasticInOut: (
+		timeOrOffset: number,
+		start: number,
+		end: number,
+		duration = 1,
+		amplitude = 1,
+		period = 0.5
+	): number => {
+		if (timeOrOffset === 0) {
+			return start
+		}
+
+		if ((timeOrOffset /= duration / 2) === 2) {
+			return start + end
+		}
+
+		period *= duration
+		let s = 0
+		if (amplitude < Math.abs(end)) {
+			amplitude = end
+			s = period / 4
+		} else {
+			s = (period / (2 * Math.PI)) * Math.asin(end / amplitude)
+		}
+
+		if (timeOrOffset < 1) {
+			return (
+				-0.5 *
+					(amplitude *
+						Math.pow(2, 10 * (timeOrOffset -= 1)) *
+						Math.sin(((timeOrOffset * duration - s) * (2 * Math.PI)) / period)) +
+				start
+			)
+		}
+		return (
+			amplitude *
+				Math.pow(2, -10 * (timeOrOffset -= 1)) *
+				Math.sin(((timeOrOffset * duration - s) * (2 * Math.PI)) / period) *
+				0.5 +
+			end +
+			start
+		)
+	},
+
+	/**
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @param {number} overshoot (optional)
 	 * @return {number}
 	 */
-	backIn: function (time: number, start: number, end: number, duration: number, overshoot = 1.70158): number {
-		return end * (time /= duration) * time * ((overshoot + 1) * time - overshoot) + start
+	backIn: (timeOrOffset: number, start: number, end: number, duration = 1, overshoot = 1.70158): number => {
+		return end * (timeOrOffset /= duration) * timeOrOffset * ((overshoot + 1) * timeOrOffset - overshoot) + start
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @param {number} s overshoot (optional)
 	 * @return {number}
 	 */
-	backOut: function (time: number, start: number, end: number, duration: number, overshoot = 1.70158): number {
-		return end * ((time = time / duration - 1) * time * ((overshoot + 1) * time + overshoot) + 1) + start
+	backOut: (timeOrOffset: number, start: number, end: number, duration = 1, overshoot = 1.70158): number => {
+		return (
+			end *
+				((timeOrOffset = timeOrOffset / duration - 1) * timeOrOffset * ((overshoot + 1) * timeOrOffset + overshoot) +
+					1) +
+			start
+		)
 	},
 
 	/**
-	 * @param {number} time current time
+	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
 	 * @param {number} end end value
 	 * @param {number} duration duration
 	 * @param {number} overshoot (optional)
 	 * @return {number}
 	 */
-	backInOut: function (time: number, start: number, end: number, duration: number, overshoot = 1.70158): number {
-		if ((time /= duration / 2) < 1) {
-			return (end / 2) * (time * time * (((overshoot *= 1.525) + 1) * time - overshoot)) + start
+	backInOut: (timeOrOffset: number, start: number, end: number, duration = 1, overshoot = 1.70158): number => {
+		if ((timeOrOffset /= duration / 2) < 1) {
+			return (end / 2) * (timeOrOffset * timeOrOffset * (((overshoot *= 1.525) + 1) * timeOrOffset - overshoot)) + start
 		}
-		return (end / 2) * ((time -= 2) * time * (((overshoot *= 1.525) + 1) * time + overshoot) + 2) + start
+		return (
+			(end / 2) * ((timeOrOffset -= 2) * timeOrOffset * (((overshoot *= 1.525) + 1) * timeOrOffset + overshoot) + 2) +
+			start
+		)
 	},
 
 	/**
@@ -446,8 +453,8 @@ const Easings = {
 	 * @param {number} d duration
 	 * @return {number}
 	 */
-	bounceIn: function (time: number, start: number, end: number, duration: number): number {
-		return end - Easings.bounceOut(duration - time, 0, end, duration) + start
+	bounceIn: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		return end - Easings.bounceOut(duration - timeOrOffset, 0, end, duration) + start
 	},
 
 	/**
@@ -457,15 +464,15 @@ const Easings = {
 	 * @param {number} d duration
 	 * @return {number}
 	 */
-	bounceOut: function (time: number, start: number, end: number, duration: number): number {
-		if ((time /= duration) < 1 / 2.75) {
-			return end * (7.5625 * time * time) + start
-		} else if (time < 2 / 2.75) {
-			return end * (7.5625 * (time -= 1.5 / 2.75) * time + 0.75) + start
-		} else if (time < 2.5 / 2.75) {
-			return end * (7.5625 * (time -= 2.25 / 2.75) * time + 0.9375) + start
+	bounceOut: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		if ((timeOrOffset /= duration) < 1 / 2.75) {
+			return end * (7.5625 * timeOrOffset * timeOrOffset) + start
+		} else if (timeOrOffset < 2 / 2.75) {
+			return end * (7.5625 * (timeOrOffset -= 1.5 / 2.75) * timeOrOffset + 0.75) + start
+		} else if (timeOrOffset < 2.5 / 2.75) {
+			return end * (7.5625 * (timeOrOffset -= 2.25 / 2.75) * timeOrOffset + 0.9375) + start
 		}
-		return end * (7.5625 * (time -= 2.625 / 2.75) * time + 0.984375) + start
+		return end * (7.5625 * (timeOrOffset -= 2.625 / 2.75) * timeOrOffset + 0.984375) + start
 	},
 
 	/**
@@ -477,11 +484,11 @@ const Easings = {
 	 * @param {number} duration
 	 * @returns
 	 */
-	bounceInOut: function (time: number, start: number, end: number, duration: number): number {
-		if (time < duration / 2) {
-			return Easings.bounceIn(time * 2, 0, end, duration) * 0.5 + start
+	bounceInOut: (timeOrOffset: number, start: number, end: number, duration = 1): number => {
+		if (timeOrOffset < duration / 2) {
+			return Easings.bounceIn(timeOrOffset * 2, 0, end, duration) * 0.5 + start
 		}
-		return Easings.bounceOut(time * 2 - duration, 0, end, duration) * 0.5 + end * 0.5 + start
+		return Easings.bounceOut(timeOrOffset * 2 - duration, 0, end, duration) * 0.5 + end * 0.5 + start
 	},
 }
 
