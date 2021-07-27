@@ -106,7 +106,6 @@ console.log(anim(2200)) // 100 (ended)
 | ------------------- | ------------------------------------------- | ------- | ---------------------------------------------------------------------------------- |
 | from                | number \| string \| Array<number \| string> | -       | start value                                                                        |
 | to                  | number \| string \| Array<number \| string> | -       | end value                                                                          |
-| to                  | number \| string \| Array<number \| string> | -       | end value                                                                          |
 | duration            | number                                      | 1000    | Animation duration in milliseconds                                                 |
 | direction           | normal \| reverse \| alternate              | normal  | Direction of animation. Alternate goes from 'from' to 'to' and from 'to' to 'from' |
 | loop                | number \| boolean                           | false   | Define a number of repetitions                                                     |
