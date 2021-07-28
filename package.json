@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"description": "Urpflanze package",
 	"license": "GPL-3.0-or-later",
-	"docs": "https://github.com/urpflanze-org/animation/blob/master/README.md",
+	"docs": "https://docs.urpflanze.org/animation/",
 	"keywords": [
 		"urpflanze",
 		"animation",
@@ -15,7 +15,7 @@
 		"email": "gennaro.bs@gmail.com",
 		"url": "https://github.com/genbs"
 	},
-	"homepage": "https://github.com/urpflanze-org/animation/",
+	"homepage": "https://docs.urpflanze.org/animation/",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/urpflanze-org/animation.git"
