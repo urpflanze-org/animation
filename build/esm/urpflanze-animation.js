@@ -1,5 +1,5 @@
 /*!
- * @license Urpflanze Animation v"0.1.0"
+ * @license Urpflanze Animation v"0.1.1"
  * urpflanze-animation.js
  *
  * Github: https://github.com/urpflanze-org/animation
@@ -34,6 +34,7 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Return time (from 0 to duration) in milliseconds
  *
+ * @category Utilities
  * @export
  * @param {number} time Current time
  * @param {number} duration Clock duration
@@ -77,6 +78,7 @@ function clock(time, duration, loop = true, direction = 'alternate', delay = 0, 
 /**
  * Return offset between 0 and 1 from current time based on duration and other parameters
  *
+ * @category Utilities
  * @export
  * @param {number} time
  * @param {number} duration
@@ -93,6 +95,7 @@ const PI2 = Math.PI * 2;
 /**
  * Return sin of period 'durate' in time 'time'
  *
+ * @category Utilities
  * @export
  * @param {number} time
  * @param {number} durate
@@ -107,6 +110,7 @@ function sinp(time, durate, phase = 0, normalize = false) {
 /**
  * Return cos of period 'durate' in time 'time'
  *
+ * @category Utilities
  * @export
  * @param {number} time
  * @param {number} durate
@@ -118,6 +122,15 @@ function cosp(time, durate, phase = 0, normalize = false) {
     const value = Math.cos((time * PI2) / durate + phase);
     return normalize ? 0.5 + value * 0.5 : value;
 }
+/**
+ *
+ * @category Utilities
+ * @export
+ * @param {IConvertedColor} start
+ * @param {IConvertedColor} end
+ * @param {number} offset
+ * @return {*}  {string}
+ */
 function interpolateColorRGB(start, end, offset) {
     const r = start.r + offset * (end.r - start.r);
     const g = start.g + offset * (end.g - start.g);
@@ -125,6 +138,15 @@ function interpolateColorRGB(start, end, offset) {
     const alpha = start.alpha + offset * (end.alpha - start.alpha);
     return `rgba(${Math.floor(r)},${Math.floor(g)},${Math.floor(b)},${alpha})`;
 }
+/**
+ *
+ * @category Utilities
+ * @export
+ * @param {IConvertedColor} start
+ * @param {IConvertedColor} end
+ * @param {number} offset
+ * @return {*}  {string}
+ */
 function interpolateColorHSL(start, end, offset) {
     const h = start.h + offset * (end.h - start.h);
     const s = start.s + offset * (end.s - start.s);
@@ -148,6 +170,7 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Create TAnimation from object
  *
+ * @category Animation
  * @param simpleAnimation
  * @returns
  */
@@ -265,6 +288,7 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Return a callback for value interpolation passing offset from 0 to 1
  *
+ * @category Interpolation
  * @param simpleAnimation
  * @returns
  */
@@ -307,6 +331,7 @@ function createInterpolationCallback(simpleAnimation) {
 /**
  * Return a callback for calculate offset (0 to 1) from elapsed time and animation duration
  *
+ * @category Interpolation
  * @param type
  * @returns
  */
@@ -876,7 +901,8 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Easing functions
  *
- * @category Services.Animation
+ * @category Interpolation
+ * @export
  */
 const Easings = {
     /**
@@ -1317,7 +1343,6 @@ const Easings = {
         return Easings.bounceOut(timeOrOffset * 2 - duration, 0, end, duration) * 0.5 + end * 0.5 + start;
     },
 };
-
 //# sourceMappingURL=Easings.js.map
 
 /***/ }),
@@ -1338,6 +1363,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _createAnimation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
 
 
+/**
+ * Create animation from ISimpleAnimation.
+ *
+ * @category Animation
+ * @export
+ * @param {ISimpleAnimation} simpleAnimation
+ * @return {*}  {(TAnimationCallback | undefined)}
+ */
 function resolveSimpleAnimation(simpleAnimation) {
     const animation = (0,_createAnimation__WEBPACK_IMPORTED_MODULE_1__.createAnimation)(simpleAnimation);
     if (animation) {
@@ -1350,10 +1383,21 @@ function resolveSimpleAnimation(simpleAnimation) {
         };
     }
 }
-// Alias
+/**
+ * resolveSimpleAnimations alias
+ * @export
+ * @category Animation
+ */
 const Simple = resolveSimpleAnimation;
-// Compose multiple animations
-const Compose = (animations) => {
+/**
+ * Compose multiple animation into one.
+ *
+ * @category Animation
+ * @export
+ * @param {Array<ISimpleAnimation>} animations
+ * @return {*}  {(TAnimationCallback | undefined)}
+ */
+function Compose(animations) {
     const composed = (0,_composeAnimations__WEBPACK_IMPORTED_MODULE_0__.composeAnimations)(animations);
     if (composed) {
         return (propArgumentsOrCurrentTime) => {
@@ -1363,8 +1407,16 @@ const Compose = (animations) => {
             return composed(currentTime);
         };
     }
-};
-const Loop = (loopAnimation) => {
+}
+/**
+ * Create Loop animation.
+ *
+ * @category Animation
+ * @export
+ * @param {(Omit<ISimpleAnimation, 'direction' | 'loop'>)} loopAnimation
+ * @return {*}  {(TAnimationCallback | undefined)}
+ */
+function Loop(loopAnimation) {
     const simpleAnimation = loopAnimation;
     if (typeof simpleAnimation.interpolator === 'undefined') {
         simpleAnimation.interpolator = 'wave';
@@ -1381,19 +1433,35 @@ const Loop = (loopAnimation) => {
     }
     simpleAnimation.loop = true;
     return resolveSimpleAnimation(simpleAnimation);
-};
-const Static = (staticAnimation) => {
+}
+/**
+ * Create an animation that repeats once
+ *
+ * @category Animation
+ * @export
+ * @param {(Omit<ISimpleAnimation, 'direction' | 'loop'>)} staticAnimation
+ * @return {*}  {(TAnimationCallback | undefined)}
+ */
+function Static(staticAnimation) {
     const simpleAnimation = staticAnimation;
     simpleAnimation.direction = 'normal';
     simpleAnimation.loop = false;
     return resolveSimpleAnimation(simpleAnimation);
-};
-const UncontrolledLoop = (uncontrolledLoopAnimation) => {
+}
+/**
+ * Create an animation that repeats in a single direction
+ *
+ * @category Animation
+ * @export
+ * @param {(Omit<ISimpleAnimation, 'direction' | 'loop'>)} uncontrolledLoopAnimation
+ * @return {*}
+ */
+function UncontrolledLoop(uncontrolledLoopAnimation) {
     const simpleAnimation = uncontrolledLoopAnimation;
     simpleAnimation.direction = 'normal';
     simpleAnimation.loop = true;
     return resolveSimpleAnimation(simpleAnimation);
-};
+}
 //# sourceMappingURL=Animation.js.map
 
 /***/ }),
@@ -1414,7 +1482,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /**
  *
- *
+ * @category Utilities
  * @export
  * @param {Array<ISimpleAnimation>} simpleAnimations
  * @return {*}  {(((currentTime: number) => string | number | Array<string | number> | undefined) | undefined)}
