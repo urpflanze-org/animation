@@ -16,6 +16,7 @@ interface TBindedAnimationValues {
 /**
  * Create TAnimation from object
  *
+ * @category Animation
  * @param simpleAnimation
  * @returns
  */

@@ -3,6 +3,14 @@ import { composeAnimations } from './composeAnimations'
 import { createAnimation } from './createAnimation'
 import { ISimpleAnimation, TAnimationCallback } from './types'
 
+/**
+ * Create animation from ISimpleAnimation.
+ *
+ * @category Animation
+ * @export
+ * @param {ISimpleAnimation} simpleAnimation
+ * @return {*}  {(TAnimationCallback | undefined)}
+ */
 export function resolveSimpleAnimation(simpleAnimation: ISimpleAnimation): TAnimationCallback | undefined {
 	const animation = createAnimation(simpleAnimation)
 
@@ -22,11 +30,22 @@ export function resolveSimpleAnimation(simpleAnimation: ISimpleAnimation): TAnim
 	}
 }
 
-// Alias
+/**
+ * resolveSimpleAnimations alias
+ * @export
+ * @category Animation
+ */
 export const Simple = resolveSimpleAnimation
 
-// Compose multiple animations
-export const Compose = (animations: Array<ISimpleAnimation>) => {
+/**
+ * Compose multiple animation into one.
+ *
+ * @category Animation
+ * @export
+ * @param {Array<ISimpleAnimation>} animations
+ * @return {*}  {(TAnimationCallback | undefined)}
+ */
+export function Compose(animations: Array<ISimpleAnimation>): TAnimationCallback | undefined {
 	const composed = composeAnimations(animations)
 
 	if (composed) {
@@ -43,7 +62,15 @@ export const Compose = (animations: Array<ISimpleAnimation>) => {
 	}
 }
 
-export const Loop = (loopAnimation: Omit<ISimpleAnimation, 'direction' | 'loop'>): TAnimationCallback | undefined => {
+/**
+ * Create Loop animation.
+ *
+ * @category Animation
+ * @export
+ * @param {(Omit<ISimpleAnimation, 'direction' | 'loop'>)} loopAnimation
+ * @return {*}  {(TAnimationCallback | undefined)}
+ */
+export function Loop(loopAnimation: Omit<ISimpleAnimation, 'direction' | 'loop'>): TAnimationCallback | undefined {
 	const simpleAnimation: ISimpleAnimation = loopAnimation
 
 	if (typeof simpleAnimation.interpolator === 'undefined') {
@@ -65,7 +92,15 @@ export const Loop = (loopAnimation: Omit<ISimpleAnimation, 'direction' | 'loop'>
 	return resolveSimpleAnimation(simpleAnimation)
 }
 
-export const Static = (staticAnimation: Omit<ISimpleAnimation, 'direction' | 'loop'>) => {
+/**
+ * Create an animation that repeats once
+ *
+ * @category Animation
+ * @export
+ * @param {(Omit<ISimpleAnimation, 'direction' | 'loop'>)} staticAnimation
+ * @return {*}  {(TAnimationCallback | undefined)}
+ */
+export function Static(staticAnimation: Omit<ISimpleAnimation, 'direction' | 'loop'>): TAnimationCallback | undefined {
 	const simpleAnimation: ISimpleAnimation = staticAnimation
 
 	simpleAnimation.direction = 'normal'
@@ -74,7 +109,15 @@ export const Static = (staticAnimation: Omit<ISimpleAnimation, 'direction' | 'lo
 	return resolveSimpleAnimation(simpleAnimation)
 }
 
-export const UncontrolledLoop = (uncontrolledLoopAnimation: Omit<ISimpleAnimation, 'direction' | 'loop'>) => {
+/**
+ * Create an animation that repeats in a single direction
+ *
+ * @category Animation
+ * @export
+ * @param {(Omit<ISimpleAnimation, 'direction' | 'loop'>)} uncontrolledLoopAnimation
+ * @return {*}
+ */
+export function UncontrolledLoop(uncontrolledLoopAnimation: Omit<ISimpleAnimation, 'direction' | 'loop'>) {
 	const simpleAnimation: ISimpleAnimation = uncontrolledLoopAnimation
 
 	simpleAnimation.direction = 'normal'

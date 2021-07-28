@@ -3,6 +3,7 @@ import { IConvertedColor } from '@urpflanze/color'
 /**
  * Return time (from 0 to duration) in milliseconds
  *
+ * @category Utilities
  * @export
  * @param {number} time Current time
  * @param {number} duration Clock duration
@@ -57,6 +58,7 @@ export function clock(
 /**
  * Return offset between 0 and 1 from current time based on duration and other parameters
  *
+ * @category Utilities
  * @export
  * @param {number} time
  * @param {number} duration
@@ -82,6 +84,7 @@ const PI2 = Math.PI * 2
 /**
  * Return sin of period 'durate' in time 'time'
  *
+ * @category Utilities
  * @export
  * @param {number} time
  * @param {number} durate
@@ -98,6 +101,7 @@ export function sinp(time: number, durate: number, phase = 0, normalize = false)
 /**
  * Return cos of period 'durate' in time 'time'
  *
+ * @category Utilities
  * @export
  * @param {number} time
  * @param {number} durate
@@ -111,6 +115,15 @@ export function cosp(time: number, durate: number, phase = 0, normalize = false)
 	return normalize ? 0.5 + value * 0.5 : value
 }
 
+/**
+ *
+ * @category Utilities
+ * @export
+ * @param {IConvertedColor} start
+ * @param {IConvertedColor} end
+ * @param {number} offset
+ * @return {*}  {string}
+ */
 export function interpolateColorRGB(start: IConvertedColor, end: IConvertedColor, offset: number): string {
 	const r = start.r + offset * (end.r - start.r)
 	const g = start.g + offset * (end.g - start.g)
@@ -121,6 +134,15 @@ export function interpolateColorRGB(start: IConvertedColor, end: IConvertedColor
 	return `rgba(${Math.floor(r)},${Math.floor(g)},${Math.floor(b)},${alpha})`
 }
 
+/**
+ *
+ * @category Utilities
+ * @export
+ * @param {IConvertedColor} start
+ * @param {IConvertedColor} end
+ * @param {number} offset
+ * @return {*}  {string}
+ */
 export function interpolateColorHSL(start: IConvertedColor, end: IConvertedColor, offset: number): string {
 	const h = start.h + offset * (end.h - start.h)
 	const s = start.s + offset * (end.s - start.s)

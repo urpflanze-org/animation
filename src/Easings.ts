@@ -1,9 +1,10 @@
 /**
  * Easing functions
  *
- * @category Services.Animation
+ * @category Interpolation
+ * @export
  */
-const Easings = {
+export const Easings = {
 	/**
 	 * @param {number} timeOrOffset current time
 	 * @param {number} start start value
@@ -491,5 +492,3 @@ const Easings = {
 		return Easings.bounceOut(timeOrOffset * 2 - duration, 0, end, duration) * 0.5 + end * 0.5 + start
 	},
 }
-
-export { Easings }

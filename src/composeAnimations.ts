@@ -5,7 +5,7 @@ import { interpolateColorRGB } from './utilities'
 
 /**
  *
- *
+ * @category Utilities
  * @export
  * @param {Array<ISimpleAnimation>} simpleAnimations
  * @return {*}  {(((currentTime: number) => string | number | Array<string | number> | undefined) | undefined)}

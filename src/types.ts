@@ -1,54 +1,65 @@
 import type { IPropArguments } from '@urpflanze/core'
-import { Easings } from './Easings'
+import { Easings } from 'Easings'
 
 //////////////////////////
 
 /**
- * @internal
+ * @category Types.Interpolator
  */
-interface TWaveInterpolator {
+export type TEasings = keyof typeof Easings
+
+/**
+ * @category Types.Interpolator
+ */
+export interface TWaveInterpolator {
 	type: 'wave'
 	params: { phase: number }
 }
 
 /**
- * @internal
+ * @category Types.Interpolator
  */
-interface TElasticInterpolator {
+export interface TElasticInterpolator {
 	type: 'elasticIn' | 'elasticOut' | 'elasticInOut'
 	params: { amplitude?: number; period?: number }
 }
 
 /**
- * @internal
+ * @category Types.Interpolator
  */
-interface TBackInterpolator {
+export interface TBackInterpolator {
 	type: 'backIn' | 'backOut' | 'backInOut'
 	params: { overshoot?: number }
 }
 
 /**
- * @internal
+ * @category Types.Interpolator
  */
-interface TCubicBezierInterpolator {
+export interface TCubicBezierInterpolator {
 	type: 'cubicBezier'
 	params: [number, number, number, number]
 }
 
 /**
- * @internal
+ * @category Types.Interpolator
  */
 export type TInterpolator =
 	| ((elapsedOffset: number, elapsed: number) => number /* between 0 and 1 */)
 	| 'wave'
 	| TWaveInterpolator
-	| keyof typeof Easings
+	| TEasings
 	| TElasticInterpolator
 	| TBackInterpolator
 	| TCubicBezierInterpolator
 
 //////////////////////////
 
+/**
+ *
+ * @category Types.Animation
+ * @export
+ * @interface ISimpleAnimation
+ */
 export interface ISimpleAnimation {
 	/**
 	 * Supported color string format:
@@ -122,10 +133,19 @@ export interface ISimpleAnimation {
 	colorTransitionMode?: 'hue' | 'rgb'
 }
 
+/**
+ * @category Types.Animation
+ */
 export type TAnimationFunction = (elapsed: number, duration: number) => number
 
+/**
+ * @category Types.Animation
+ */
 export type TInterpolateCallback = (offset: number) => number | string | Array<number | string>
 
+/**
+ * @category Types.Animation
+ */
 export interface TAnimation {
 	loop: number
 	loopDuration: number
@@ -137,6 +157,9 @@ export interface TAnimation {
 	update: (time: number) => void
 }
 
+/**
+ * @category Types.Animation
+ */
 export type TAnimationCallback =
 	| ((currentTime: number | IPropArguments) => string | number | Array<string | number> | undefined)
 	| undefined

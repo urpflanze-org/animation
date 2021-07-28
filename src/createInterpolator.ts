@@ -7,6 +7,7 @@ import { interpolateColorHSL, interpolateColorRGB } from './utilities'
 /**
  * Return a callback for value interpolation passing offset from 0 to 1
  *
+ * @category Interpolation
  * @param simpleAnimation
  * @returns
  */
@@ -59,6 +60,7 @@ export function createInterpolationCallback(simpleAnimation: ISimpleAnimation): 
 /**
  * Return a callback for calculate offset (0 to 1) from elapsed time and animation duration
  *
+ * @category Interpolation
  * @param type
  * @returns
  */

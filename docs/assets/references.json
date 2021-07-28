@@ -1,0 +1,1827 @@
+[
+	{
+		"name": "Compose",
+		"description": "Compose multiple animation into one.",
+		"parameters": [
+			{
+				"name": "animations",
+				"type": {
+					"type": "array",
+					"elementType": {
+						"type": "reference",
+						"id": 294,
+						"name": "ISimpleAnimation"
+					}
+				},
+				"order": 9999
+			}
+		],
+		"return_type": {
+			"type": "union",
+			"types": [
+				{
+					"type": "reference",
+					"id": 326,
+					"name": "TAnimationCallback"
+				},
+				{
+					"type": "intrinsic",
+					"name": "undefined"
+				}
+			]
+		},
+		"order": 9999,
+		"type": "Function",
+		"source": {
+			"fileName": "Animation.ts",
+			"line": 48,
+			"character": 23
+		},
+		"category": "Animation"
+	},
+	{
+		"name": "Loop",
+		"description": "Create Loop animation.",
+		"parameters": [
+			{
+				"name": "loopAnimation",
+				"type": {
+					"type": "reference",
+					"typeArguments": [
+						{
+							"type": "reference",
+							"id": 294,
+							"name": "ISimpleAnimation"
+						},
+						{
+							"type": "union",
+							"types": [
+								{
+									"type": "literal",
+									"value": "direction"
+								},
+								{
+									"type": "literal",
+									"value": "loop"
+								}
+							]
+						}
+					],
+					"name": "Omit"
+				},
+				"order": 9999
+			}
+		],
+		"return_type": {
+			"type": "union",
+			"types": [
+				{
+					"type": "reference",
+					"id": 326,
+					"name": "TAnimationCallback"
+				},
+				{
+					"type": "intrinsic",
+					"name": "undefined"
+				}
+			]
+		},
+		"order": 9999,
+		"type": "Function",
+		"source": {
+			"fileName": "Animation.ts",
+			"line": 73,
+			"character": 20
+		},
+		"category": "Animation"
+	},
+	{
+		"name": "Simple",
+		"description": "resolveSimpleAnimations alias",
+		"parameters": [
+			{
+				"name": "simpleAnimation",
+				"type": {
+					"type": "reference",
+					"id": 294,
+					"name": "ISimpleAnimation"
+				},
+				"order": 9999
+			}
+		],
+		"return_type": {
+			"type": "union",
+			"types": [
+				{
+					"type": "reference",
+					"id": 326,
+					"name": "TAnimationCallback"
+				},
+				{
+					"type": "intrinsic",
+					"name": "undefined"
+				}
+			]
+		},
+		"order": 9999,
+		"type": "Function",
+		"source": {
+			"fileName": "Animation.ts",
+			"line": 38,
+			"character": 19
+		},
+		"category": "Animation"
+	},
+	{
+		"name": "Static",
+		"description": "Create an animation that repeats once",
+		"parameters": [
+			{
+				"name": "staticAnimation",
+				"type": {
+					"type": "reference",
+					"typeArguments": [
+						{
+							"type": "reference",
+							"id": 294,
+							"name": "ISimpleAnimation"
+						},
+						{
+							"type": "union",
+							"types": [
+								{
+									"type": "literal",
+									"value": "direction"
+								},
+								{
+									"type": "literal",
+									"value": "loop"
+								}
+							]
+						}
+					],
+					"name": "Omit"
+				},
+				"order": 9999
+			}
+		],
+		"return_type": {
+			"type": "union",
+			"types": [
+				{
+					"type": "reference",
+					"id": 326,
+					"name": "TAnimationCallback"
+				},
+				{
+					"type": "intrinsic",
+					"name": "undefined"
+				}
+			]
+		},
+		"order": 9999,
+		"type": "Function",
+		"source": {
+			"fileName": "Animation.ts",
+			"line": 103,
+			"character": 22
+		},
+		"category": "Animation"
+	},
+	{
+		"name": "UncontrolledLoop",
+		"description": "Create an animation that repeats in a single direction",
+		"parameters": [
+			{
+				"name": "uncontrolledLoopAnimation",
+				"type": {
+					"type": "reference",
+					"typeArguments": [
+						{
+							"type": "reference",
+							"id": 294,
+							"name": "ISimpleAnimation"
+						},
+						{
+							"type": "union",
+							"types": [
+								{
+									"type": "literal",
+									"value": "direction"
+								},
+								{
+									"type": "literal",
+									"value": "loop"
+								}
+							]
+						}
+					],
+					"name": "Omit"
+				},
+				"order": 9999
+			}
+		],
+		"return_type": {
+			"type": "reference",
+			"id": 326,
+			"name": "TAnimationCallback"
+		},
+		"order": 9999,
+		"type": "Function",
+		"source": {
+			"fileName": "Animation.ts",
+			"line": 120,
+			"character": 32
+		},
+		"category": "Animation"
+	},
+	{
+		"name": "resolveSimpleAnimation",
+		"description": "Create animation from ISimpleAnimation.",
+		"parameters": [
+			{
+				"name": "simpleAnimation",
+				"type": {
+					"type": "reference",
+					"id": 294,
+					"name": "ISimpleAnimation"
+				},
+				"order": 9999
+			}
+		],
+		"return_type": {
+			"type": "union",
+			"types": [
+				{
+					"type": "reference",
+					"id": 326,
+					"name": "TAnimationCallback"
+				},
+				{
+					"type": "intrinsic",
+					"name": "undefined"
+				}
+			]
+		},
+		"order": 9999,
+		"type": "Function",
+		"source": {
+			"fileName": "Animation.ts",
+			"line": 14,
+			"character": 38
+		},
+		"category": "Animation"
+	},
+	{
+		"name": "composeAnimations",
+		"parameters": [
+			{
+				"name": "simpleAnimations",
+				"type": {
+					"type": "array",
+					"elementType": {
+						"type": "reference",
+						"id": 294,
+						"name": "ISimpleAnimation"
+					}
+				},
+				"order": 9999
+			}
+		],
+		"return_type": {
+			"type": "union",
+			"types": [
+				{
+					"type": "reflection",
+					"declaration": {
+						"id": 253,
+						"name": "__type",
+						"kind": 65536,
+						"kindString": "Type literal",
+						"flags": {},
+						"sources": [
+							{
+								"fileName": "composeAnimations.ts",
+								"line": 15,
+								"character": 4
+							}
+						],
+						"signatures": [
+							{
+								"id": 254,
+								"name": "__type",
+								"kind": 4096,
+								"kindString": "Call signature",
+								"flags": {},
+								"parameters": [
+									{
+										"id": 255,
+										"name": "currentTime",
+										"kind": 32768,
+										"kindString": "Parameter",
+										"flags": {},
+										"type": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								],
+								"type": {
+									"type": "union",
+									"types": [
+										{
+											"type": "intrinsic",
+											"name": "string"
+										},
+										{
+											"type": "intrinsic",
+											"name": "number"
+										},
+										{
+											"type": "array",
+											"elementType": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "string"
+													},
+													{
+														"type": "intrinsic",
+														"name": "number"
+													}
+												]
+											}
+										},
+										{
+											"type": "intrinsic",
+											"name": "undefined"
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"type": "intrinsic",
+					"name": "undefined"
+				}
+			]
+		},
+		"order": 9999,
+		"type": "Function",
+		"source": {
+			"fileName": "composeAnimations.ts",
+			"line": 13,
+			"character": 33
+		},
+		"category": "Utilities"
+	},
+	{
+		"name": "createAnimation",
+		"description": "Create TAnimation from object",
+		"parameters": [
+			{
+				"name": "simpleAnimation",
+				"type": {
+					"type": "reference",
+					"id": 294,
+					"name": "ISimpleAnimation"
+				},
+				"order": 9999
+			}
+		],
+		"return_type": {
+			"type": "union",
+			"types": [
+				{
+					"type": "reference",
+					"id": 314,
+					"name": "TAnimation"
+				},
+				{
+					"type": "intrinsic",
+					"name": "undefined"
+				}
+			]
+		},
+		"order": 9999,
+		"type": "Function",
+		"source": {
+			"fileName": "createAnimation.ts",
+			"line": 23,
+			"character": 31
+		},
+		"category": "Animation"
+	},
+	{
+		"name": "createInterpolationCallback",
+		"description": "Return a callback for value interpolation passing offset from 0 to 1",
+		"parameters": [
+			{
+				"name": "simpleAnimation",
+				"type": {
+					"type": "reference",
+					"id": 294,
+					"name": "ISimpleAnimation"
+				},
+				"order": 9999
+			}
+		],
+		"return_type": {
+			"type": "union",
+			"types": [
+				{
+					"type": "intrinsic",
+					"name": "undefined"
+				},
+				{
+					"type": "reference",
+					"id": 310,
+					"name": "TInterpolateCallback"
+				}
+			]
+		},
+		"order": 9999,
+		"type": "Function",
+		"source": {
+			"fileName": "createInterpolator.ts",
+			"line": 14,
+			"character": 43
+		},
+		"category": "Interpolation"
+	},
+	{
+		"name": "createInterpolator",
+		"description": "Return a callback for calculate offset (0 to 1) from elapsed time and animation duration",
+		"parameters": [
+			{
+				"name": "type",
+				"type": {
+					"type": "reference",
+					"id": 289,
+					"name": "TInterpolator"
+				},
+				"order": 9999,
+				"bOptional": true
+			}
+		],
+		"return_type": {
+			"type": "reference",
+			"id": 305,
+			"name": "TAnimationFunction"
+		},
+		"order": 9999,
+		"type": "Function",
+		"source": {
+			"fileName": "createInterpolator.ts",
+			"line": 67,
+			"character": 34
+		},
+		"category": "Interpolation"
+	},
+	{
+		"type": "Interface",
+		"name": "ISimpleAnimation",
+		"order": 9999,
+		"source": {
+			"fileName": "types.ts",
+			"line": 63,
+			"character": 33
+		},
+		"properties": [
+			{
+				"name": "from",
+				"description": "Supported color string format:\nrgba([0-255], [0-255], [0-255], 0-1)\nhsla([0-360], [0-100]%, [0-100]%, 0-1)",
+				"type": {
+					"type": "union",
+					"types": [
+						{
+							"name": "string",
+							"type": "intrinsic",
+							"order": 9999
+						},
+						{
+							"name": "number",
+							"type": "intrinsic",
+							"order": 9999
+						},
+						{
+							"type": "array",
+							"order": 9999
+						}
+					]
+				},
+				"order": 1
+			},
+			{
+				"name": "to",
+				"description": "Supported color string format:\nrgba([0-255], [0-255], [0-255], 0-1)\nhsla([0-360], [0-100]%, [0-100]%, 0-1)",
+				"type": {
+					"type": "union",
+					"types": [
+						{
+							"name": "string",
+							"type": "intrinsic",
+							"order": 9999
+						},
+						{
+							"name": "number",
+							"type": "intrinsic",
+							"order": 9999
+						},
+						{
+							"type": "array",
+							"order": 9999
+						}
+					]
+				},
+				"order": 2
+			},
+			{
+				"name": "direction",
+				"description": "Direction of animation",
+				"type": {
+					"type": "union",
+					"types": [
+						{
+							"type": "literal",
+							"value": "normal",
+							"order": 9999
+						},
+						{
+							"type": "literal",
+							"value": "reverse",
+							"order": 9999
+						},
+						{
+							"type": "literal",
+							"value": "alternate",
+							"order": 9999
+						}
+					]
+				},
+				"order": 3,
+				"bOptional": true
+			},
+			{
+				"name": "duration",
+				"description": "Duration in millisecond",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"order": 3,
+				"bOptional": true
+			},
+			{
+				"name": "afterDelay",
+				"description": "Delay after animation end loop",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"order": 7,
+				"bOptional": true
+			},
+			{
+				"name": "delay",
+				"description": "Delay of animation start",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"order": 7,
+				"bOptional": true
+			},
+			{
+				"name": "round",
+				"description": "Round value, undefined is no round\n1 = no decimal (int)\n10 = 1 decimal\n100 = 2 decimals",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"order": 8,
+				"bOptional": true
+			},
+			{
+				"name": "colorTransitionMode",
+				"description": "With the 'rgb' value the color will vary linearly according to the <mark>mode</mark> and <mark>modeFunction</mark>,\nwhile with 'hue' they will be converted to hsla and then go through the color wheel",
+				"type": {
+					"type": "union",
+					"types": [
+						{
+							"type": "literal",
+							"value": "hue",
+							"order": 9999
+						},
+						{
+							"type": "literal",
+							"value": "rgb",
+							"order": 9999
+						}
+					]
+				},
+				"order": 9,
+				"bOptional": true
+			},
+			{
+				"name": "interpolator",
+				"description": "Type of animation",
+				"type": {
+					"type": "reference",
+					"id": 289,
+					"name": "TInterpolator"
+				},
+				"order": 9999,
+				"bOptional": true
+			},
+			{
+				"name": "loop",
+				"description": "true if animation is loop\nnumber as count of repetitions",
+				"type": {
+					"type": "union",
+					"types": [
+						{
+							"name": "number",
+							"type": "intrinsic",
+							"order": 9999
+						},
+						{
+							"name": "boolean",
+							"type": "intrinsic",
+							"order": 9999
+						}
+					]
+				},
+				"order": 9999,
+				"bOptional": true
+			}
+		],
+		"category": "Types.Animation"
+	},
+	{
+		"type": "Interface",
+		"name": "TAnimation",
+		"order": 9999,
+		"source": {
+			"fileName": "types.ts",
+			"line": 149,
+			"character": 27
+		},
+		"properties": [
+			{
+				"name": "direction",
+				"type": {
+					"type": "union",
+					"types": [
+						{
+							"type": "literal",
+							"value": "normal",
+							"order": 9999
+						},
+						{
+							"type": "literal",
+							"value": "reverse",
+							"order": 9999
+						}
+					]
+				},
+				"order": 9999
+			},
+			{
+				"name": "ended",
+				"type": {
+					"type": "intrinsic",
+					"name": "boolean"
+				},
+				"order": 9999
+			},
+			{
+				"name": "loop",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"order": 9999
+			},
+			{
+				"name": "loopDuration",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"order": 9999
+			},
+			{
+				"name": "offset",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"order": 9999
+			},
+			{
+				"name": "started",
+				"type": {
+					"type": "intrinsic",
+					"name": "boolean"
+				},
+				"order": 9999
+			},
+			{
+				"name": "update",
+				"type": {
+					"type": "reflection",
+					"declaration": {
+						"id": 323,
+						"name": "__type",
+						"kind": 65536,
+						"kindString": "Type literal",
+						"flags": {},
+						"signatures": [
+							{
+								"id": 324,
+								"name": "__type",
+								"kind": 4096,
+								"kindString": "Call signature",
+								"flags": {},
+								"parameters": [
+									{
+										"id": 325,
+										"name": "time",
+										"kind": 32768,
+										"kindString": "Parameter",
+										"flags": {},
+										"type": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								],
+								"type": {
+									"type": "intrinsic",
+									"name": "void"
+								}
+							}
+						]
+					}
+				},
+				"order": 9999
+			},
+			{
+				"name": "value",
+				"type": {
+					"type": "union",
+					"types": [
+						{
+							"name": "undefined",
+							"type": "intrinsic",
+							"order": 9999
+						},
+						{
+							"name": "string",
+							"type": "intrinsic",
+							"order": 9999
+						},
+						{
+							"name": "number",
+							"type": "intrinsic",
+							"order": 9999
+						},
+						{
+							"type": "array",
+							"order": 9999
+						}
+					]
+				},
+				"order": 9999
+			}
+		],
+		"category": "Types.Animation"
+	},
+	{
+		"type": "Interface",
+		"name": "TBackInterpolator",
+		"order": 9999,
+		"source": {
+			"fileName": "types.ts",
+			"line": 30,
+			"character": 34
+		},
+		"properties": [
+			{
+				"name": "params",
+				"type": {
+					"type": "reflection",
+					"declaration": {
+						"id": 284,
+						"name": "__type",
+						"kind": 65536,
+						"kindString": "Type literal",
+						"flags": {},
+						"children": [
+							{
+								"id": 285,
+								"name": "overshoot",
+								"kind": 1024,
+								"kindString": "Property",
+								"flags": {
+									"isOptional": true
+								},
+								"sources": [
+									{
+										"fileName": "types.ts",
+										"line": 32,
+										"character": 20
+									}
+								],
+								"type": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						],
+						"groups": [
+							{
+								"title": "Properties",
+								"kind": 1024,
+								"children": [
+									285
+								]
+							}
+						]
+					}
+				},
+				"order": 9999
+			},
+			{
+				"name": "type",
+				"type": {
+					"type": "union",
+					"types": [
+						{
+							"type": "literal",
+							"value": "backIn",
+							"order": 9999
+						},
+						{
+							"type": "literal",
+							"value": "backOut",
+							"order": 9999
+						},
+						{
+							"type": "literal",
+							"value": "backInOut",
+							"order": 9999
+						}
+					]
+				},
+				"order": 9999
+			}
+		],
+		"category": "Types.Interpolator"
+	},
+	{
+		"type": "Interface",
+		"name": "TCubicBezierInterpolator",
+		"order": 9999,
+		"source": {
+			"fileName": "types.ts",
+			"line": 38,
+			"character": 41
+		},
+		"properties": [
+			{
+				"name": "params",
+				"type": {
+					"type": "tuple",
+					"elements": [
+						{
+							"type": "intrinsic",
+							"name": "number"
+						},
+						{
+							"type": "intrinsic",
+							"name": "number"
+						},
+						{
+							"type": "intrinsic",
+							"name": "number"
+						},
+						{
+							"type": "intrinsic",
+							"name": "number"
+						}
+					]
+				},
+				"order": 9999
+			},
+			{
+				"name": "type",
+				"type": {
+					"type": "literal",
+					"value": "cubicBezier"
+				},
+				"order": 9999
+			}
+		],
+		"category": "Types.Interpolator"
+	},
+	{
+		"type": "Interface",
+		"name": "TElasticInterpolator",
+		"order": 9999,
+		"source": {
+			"fileName": "types.ts",
+			"line": 22,
+			"character": 37
+		},
+		"properties": [
+			{
+				"name": "params",
+				"type": {
+					"type": "reflection",
+					"declaration": {
+						"id": 278,
+						"name": "__type",
+						"kind": 65536,
+						"kindString": "Type literal",
+						"flags": {},
+						"children": [
+							{
+								"id": 279,
+								"name": "amplitude",
+								"kind": 1024,
+								"kindString": "Property",
+								"flags": {
+									"isOptional": true
+								},
+								"sources": [
+									{
+										"fileName": "types.ts",
+										"line": 24,
+										"character": 20
+									}
+								],
+								"type": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							},
+							{
+								"id": 280,
+								"name": "period",
+								"kind": 1024,
+								"kindString": "Property",
+								"flags": {
+									"isOptional": true
+								},
+								"sources": [
+									{
+										"fileName": "types.ts",
+										"line": 24,
+										"character": 37
+									}
+								],
+								"type": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						],
+						"groups": [
+							{
+								"title": "Properties",
+								"kind": 1024,
+								"children": [
+									279,
+									280
+								]
+							}
+						]
+					}
+				},
+				"order": 9999
+			},
+			{
+				"name": "type",
+				"type": {
+					"type": "union",
+					"types": [
+						{
+							"type": "literal",
+							"value": "elasticIn",
+							"order": 9999
+						},
+						{
+							"type": "literal",
+							"value": "elasticOut",
+							"order": 9999
+						},
+						{
+							"type": "literal",
+							"value": "elasticInOut",
+							"order": 9999
+						}
+					]
+				},
+				"order": 9999
+			}
+		],
+		"category": "Types.Interpolator"
+	},
+	{
+		"type": "Interface",
+		"name": "TWaveInterpolator",
+		"order": 9999,
+		"source": {
+			"fileName": "types.ts",
+			"line": 14,
+			"character": 34
+		},
+		"properties": [
+			{
+				"name": "params",
+				"type": {
+					"type": "reflection",
+					"declaration": {
+						"id": 273,
+						"name": "__type",
+						"kind": 65536,
+						"kindString": "Type literal",
+						"flags": {},
+						"children": [
+							{
+								"id": 274,
+								"name": "phase",
+								"kind": 1024,
+								"kindString": "Property",
+								"flags": {},
+								"sources": [
+									{
+										"fileName": "types.ts",
+										"line": 16,
+										"character": 16
+									}
+								],
+								"type": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						],
+						"groups": [
+							{
+								"title": "Properties",
+								"kind": 1024,
+								"children": [
+									274
+								]
+							}
+						]
+					}
+				},
+				"order": 9999
+			},
+			{
+				"name": "type",
+				"type": {
+					"type": "literal",
+					"value": "wave"
+				},
+				"order": 9999
+			}
+		],
+		"category": "Types.Interpolator"
+	},
+	{
+		"name": "TAnimationCallback",
+		"type": "Type",
+		"order": 9999,
+		"source": {
+			"fileName": "types.ts",
+			"line": 163,
+			"character": 30
+		},
+		"parameter": {
+			"name": "TAnimationCallback",
+			"type": {
+				"type": "union",
+				"types": [
+					{
+						"type": "reflection",
+						"declaration": {
+							"name": "__type",
+							"parameters": [
+								{
+									"name": "currentTime",
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"name": "number",
+												"type": "intrinsic",
+												"order": 9999
+											},
+											{
+												"name": "IPropArguments",
+												"type": "reference",
+												"order": 9999
+											}
+										]
+									},
+									"order": 9999
+								}
+							],
+							"return_type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "string"
+									},
+									{
+										"type": "intrinsic",
+										"name": "number"
+									},
+									{
+										"type": "array",
+										"elementType": {
+											"type": "union",
+											"types": [
+												{
+													"type": "intrinsic",
+													"name": "string"
+												},
+												{
+													"type": "intrinsic",
+													"name": "number"
+												}
+											]
+										}
+									},
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									}
+								]
+							},
+							"order": 9999
+						},
+						"order": 9999
+					},
+					{
+						"name": "undefined",
+						"type": "intrinsic",
+						"order": 9999
+					}
+				]
+			},
+			"order": 9999
+		},
+		"category": "Types.Animation"
+	},
+	{
+		"name": "TAnimationFunction",
+		"type": "Type",
+		"order": 9999,
+		"source": {
+			"fileName": "types.ts",
+			"line": 139,
+			"character": 30
+		},
+		"parameter": {
+			"name": "TAnimationFunction",
+			"type": {
+				"type": "reflection",
+				"declaration": {
+					"id": 306,
+					"name": "__type",
+					"kind": 65536,
+					"kindString": "Type literal",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "types.ts",
+							"line": 139,
+							"character": 32
+						}
+					],
+					"signatures": [
+						{
+							"id": 307,
+							"name": "__type",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 308,
+									"name": "elapsed",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 309,
+									"name": "duration",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				}
+			},
+			"order": 9999
+		},
+		"category": "Types.Animation"
+	},
+	{
+		"name": "TEasings",
+		"type": "Type",
+		"order": 9999,
+		"source": {
+			"fileName": "types.ts",
+			"line": 9,
+			"character": 20
+		},
+		"parameter": {
+			"name": "TEasings",
+			"type": {
+				"type": "typeOperator",
+				"operator": "keyof",
+				"target": {
+					"type": "query",
+					"queryType": {
+						"type": "reference",
+						"id": 21,
+						"name": "Easings"
+					}
+				}
+			},
+			"order": 9999
+		},
+		"category": "Types.Interpolator"
+	},
+	{
+		"name": "TInterpolateCallback",
+		"type": "Type",
+		"order": 9999,
+		"source": {
+			"fileName": "types.ts",
+			"line": 144,
+			"character": 32
+		},
+		"parameter": {
+			"name": "TInterpolateCallback",
+			"type": {
+				"type": "reflection",
+				"declaration": {
+					"id": 311,
+					"name": "__type",
+					"kind": 65536,
+					"kindString": "Type literal",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "types.ts",
+							"line": 144,
+							"character": 34
+						}
+					],
+					"signatures": [
+						{
+							"id": 312,
+							"name": "__type",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 313,
+									"name": "offset",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "number"
+									},
+									{
+										"type": "intrinsic",
+										"name": "string"
+									},
+									{
+										"type": "array",
+										"elementType": {
+											"type": "union",
+											"types": [
+												{
+													"type": "intrinsic",
+													"name": "number"
+												},
+												{
+													"type": "intrinsic",
+													"name": "string"
+												}
+											]
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			"order": 9999
+		},
+		"category": "Types.Animation"
+	},
+	{
+		"name": "TInterpolator",
+		"type": "Type",
+		"order": 9999,
+		"source": {
+			"fileName": "types.ts",
+			"line": 46,
+			"character": 25
+		},
+		"parameter": {
+			"name": "TInterpolator",
+			"type": {
+				"type": "union",
+				"types": [
+					{
+						"type": "reflection",
+						"declaration": {
+							"name": "__type",
+							"parameters": [
+								{
+									"name": "elapsedOffset",
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"order": 9999
+								},
+								{
+									"name": "elapsed",
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"order": 9999
+								}
+							],
+							"return_type": {
+								"type": "intrinsic",
+								"name": "number"
+							},
+							"order": 9999
+						},
+						"order": 9999
+					},
+					{
+						"type": "literal",
+						"value": "wave",
+						"order": 9999
+					},
+					{
+						"name": "TWaveInterpolator",
+						"type": "reference",
+						"order": 9999
+					},
+					{
+						"name": "TEasings",
+						"type": "reference",
+						"order": 9999
+					},
+					{
+						"name": "TElasticInterpolator",
+						"type": "reference",
+						"order": 9999
+					},
+					{
+						"name": "TBackInterpolator",
+						"type": "reference",
+						"order": 9999
+					},
+					{
+						"name": "TCubicBezierInterpolator",
+						"type": "reference",
+						"order": 9999
+					}
+				]
+			},
+			"order": 9999
+		},
+		"category": "Types.Interpolator"
+	},
+	{
+		"name": "clock",
+		"description": "Return time (from 0 to duration) in milliseconds",
+		"parameters": [
+			{
+				"name": "time",
+				"description": "Current time",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"order": 9999
+			},
+			{
+				"name": "duration",
+				"description": "Clock duration",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"order": 9999
+			},
+			{
+				"name": "loop",
+				"type": {
+					"type": "union",
+					"types": [
+						{
+							"name": "number",
+							"type": "intrinsic",
+							"order": 9999
+						},
+						{
+							"name": "boolean",
+							"type": "intrinsic",
+							"order": 9999
+						}
+					]
+				},
+				"defaultValue": "true",
+				"order": 9999
+			},
+			{
+				"name": "direction",
+				"type": {
+					"type": "union",
+					"types": [
+						{
+							"type": "literal",
+							"value": "normal",
+							"order": 9999
+						},
+						{
+							"type": "literal",
+							"value": "reverse",
+							"order": 9999
+						},
+						{
+							"type": "literal",
+							"value": "alternate",
+							"order": 9999
+						}
+					]
+				},
+				"defaultValue": "'alternate'",
+				"order": 9999
+			},
+			{
+				"name": "delay",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"defaultValue": "0",
+				"order": 9999
+			},
+			{
+				"name": "afterDelay",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"defaultValue": "0",
+				"order": 9999
+			}
+		],
+		"return_type": {
+			"type": "intrinsic",
+			"name": "number"
+		},
+		"order": 9999,
+		"type": "Function",
+		"source": {
+			"fileName": "utilities.ts",
+			"line": 16,
+			"character": 21
+		},
+		"category": "Utilities"
+	},
+	{
+		"name": "clockOffset",
+		"description": "Return offset between 0 and 1 from current time based on duration and other parameters",
+		"parameters": [
+			{
+				"name": "time",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"order": 9999
+			},
+			{
+				"name": "duration",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"order": 9999
+			},
+			{
+				"name": "loop",
+				"type": {
+					"type": "union",
+					"types": [
+						{
+							"name": "number",
+							"type": "intrinsic",
+							"order": 9999
+						},
+						{
+							"name": "boolean",
+							"type": "intrinsic",
+							"order": 9999
+						}
+					]
+				},
+				"defaultValue": "true",
+				"order": 9999
+			},
+			{
+				"name": "direction",
+				"type": {
+					"type": "union",
+					"types": [
+						{
+							"type": "literal",
+							"value": "normal",
+							"order": 9999
+						},
+						{
+							"type": "literal",
+							"value": "reverse",
+							"order": 9999
+						},
+						{
+							"type": "literal",
+							"value": "alternate",
+							"order": 9999
+						}
+					]
+				},
+				"defaultValue": "'alternate'",
+				"order": 9999
+			},
+			{
+				"name": "delay",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"defaultValue": "0",
+				"order": 9999
+			},
+			{
+				"name": "afterDelay",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"defaultValue": "0",
+				"order": 9999
+			}
+		],
+		"return_type": {
+			"type": "intrinsic",
+			"name": "number"
+		},
+		"order": 9999,
+		"type": "Function",
+		"source": {
+			"fileName": "utilities.ts",
+			"line": 71,
+			"character": 27
+		},
+		"category": "Utilities"
+	},
+	{
+		"name": "cosp",
+		"description": "Return cos of period 'durate' in time 'time'",
+		"parameters": [
+			{
+				"name": "time",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"order": 9999
+			},
+			{
+				"name": "durate",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"order": 9999
+			},
+			{
+				"name": "phase",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"defaultValue": "0",
+				"order": 9999
+			},
+			{
+				"name": "normalize",
+				"type": {
+					"type": "intrinsic",
+					"name": "boolean"
+				},
+				"defaultValue": "false",
+				"order": 9999
+			}
+		],
+		"return_type": {
+			"type": "intrinsic",
+			"name": "number"
+		},
+		"order": 9999,
+		"type": "Function",
+		"source": {
+			"fileName": "utilities.ts",
+			"line": 112,
+			"character": 20
+		},
+		"category": "Utilities"
+	},
+	{
+		"name": "interpolateColorHSL",
+		"parameters": [
+			{
+				"name": "start",
+				"type": {
+					"type": "reference",
+					"name": "IConvertedColor"
+				},
+				"order": 9999
+			},
+			{
+				"name": "end",
+				"type": {
+					"type": "reference",
+					"name": "IConvertedColor"
+				},
+				"order": 9999
+			},
+			{
+				"name": "offset",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"order": 9999
+			}
+		],
+		"return_type": {
+			"type": "intrinsic",
+			"name": "string"
+		},
+		"order": 9999,
+		"type": "Function",
+		"source": {
+			"fileName": "utilities.ts",
+			"line": 146,
+			"character": 35
+		},
+		"category": "Utilities"
+	},
+	{
+		"name": "interpolateColorRGB",
+		"parameters": [
+			{
+				"name": "start",
+				"type": {
+					"type": "reference",
+					"name": "IConvertedColor"
+				},
+				"order": 9999
+			},
+			{
+				"name": "end",
+				"type": {
+					"type": "reference",
+					"name": "IConvertedColor"
+				},
+				"order": 9999
+			},
+			{
+				"name": "offset",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"order": 9999
+			}
+		],
+		"return_type": {
+			"type": "intrinsic",
+			"name": "string"
+		},
+		"order": 9999,
+		"type": "Function",
+		"source": {
+			"fileName": "utilities.ts",
+			"line": 127,
+			"character": 35
+		},
+		"category": "Utilities"
+	},
+	{
+		"name": "sinp",
+		"description": "Return sin of period 'durate' in time 'time'",
+		"parameters": [
+			{
+				"name": "time",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"order": 9999
+			},
+			{
+				"name": "durate",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"order": 9999
+			},
+			{
+				"name": "phase",
+				"type": {
+					"type": "intrinsic",
+					"name": "number"
+				},
+				"defaultValue": "0",
+				"order": 9999
+			},
+			{
+				"name": "normalize",
+				"type": {
+					"type": "intrinsic",
+					"name": "boolean"
+				},
+				"defaultValue": "false",
+				"order": 9999
+			}
+		],
+		"return_type": {
+			"type": "intrinsic",
+			"name": "number"
+		},
+		"order": 9999,
+		"type": "Function",
+		"source": {
+			"fileName": "utilities.ts",
+			"line": 95,
+			"character": 20
+		},
+		"category": "Utilities"
+	}
+]
