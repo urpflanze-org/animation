@@ -1,5 +1,5 @@
 import type { IPropArguments } from '@urpflanze/core'
-import { Easings } from 'Easings'
+import { Easings } from './Easings'
 
 //////////////////////////
 
