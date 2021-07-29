@@ -38,8 +38,8 @@
 			"url": "https://etherscan.io/address/0x9086c4bb7015c1d6dc79162d02e7e1239c982c01"
 		}
 	],
-	"module": "build/esm/urpflanze-animation.min.js",
-	"browser": "build/umd/urpflanze-animation.min.js",
+	"module": "build/esm/urpflanze-animation.js",
+	"browser": "build/umd/urpflanze-animation.js",
 	"main": "dist/cjs/index.js",
 	"types": "dist/cjs/index.d.ts",
 	"files": [
@@ -73,7 +73,7 @@
 	},
 	"peerDependencies": {
 		"@urpflanze/color": "^0.0.4",
-		"@urpflanze/core": "^0.5.6"
+		"@urpflanze/core": "^0.5.7"
 	},
 	"dependencies": {
 		"bezier-easing": "^2.1.0",
