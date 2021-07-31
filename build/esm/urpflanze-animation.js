@@ -1,5 +1,5 @@
 /*!
- * @license Urpflanze Animation v"0.1.1"
+ * @license Urpflanze Animation v"0.1.2"
  * urpflanze-animation.js
  *
  * Github: https://github.com/urpflanze-org/animation
