@@ -72,8 +72,8 @@
 		"webpack-cli": "^4.7.2"
 	},
 	"peerDependencies": {
-		"@urpflanze/color": "^0.0.4",
-		"@urpflanze/core": "^0.5.7"
+		"@urpflanze/color": "^0.0.5",
+		"@urpflanze/core": "^0.5.9"
 	},
 	"dependencies": {
 		"bezier-easing": "^2.1.0",

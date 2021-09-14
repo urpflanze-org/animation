@@ -12,7 +12,6 @@
 /* 1 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 
 //# sourceMappingURL=types.js.map
@@ -21,7 +20,6 @@ __webpack_require__.r(__webpack_exports__);
 /* 2 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "clock": () => (/* binding */ clock),
@@ -160,7 +158,6 @@ function interpolateColorHSL(start, end, offset) {
 /* 3 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "createAnimation": () => (/* binding */ createAnimation)
@@ -269,7 +266,6 @@ function createUpdate(animation, bindedValues, animationFunction, interpolate) {
 /* 4 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "createInterpolationCallback": () => (/* binding */ createInterpolationCallback),
@@ -277,9 +273,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _urpflanze_color__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
 /* harmony import */ var _urpflanze_color__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_urpflanze_color__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var bezier_easing__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var bezier_easing__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 /* harmony import */ var bezier_easing__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(bezier_easing__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Easings__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11);
+/* harmony import */ var _Easings__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7);
 /* harmony import */ var _utilities__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(2);
 
 
@@ -385,9 +381,28 @@ function createInterpolator(type) {
 
 /***/ }),
 /* 5 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ ((module) => {
 
-"use strict";
+/*!
+ * @license Urpflanze Color v"0.0.5"
+ * urpflanze-color.js
+ *
+ * Github: https://github.com/urpflanze-org/color
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(true)
+		module.exports = factory();
+	else {}
+})(window, function() {
+return /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ([
+/* 0 */
+/***/ (function(__unused_webpack_module, exports, __nested_webpack_require_773__) {
+
 
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -400,25 +415,23 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__webpack_require__(6), exports);
-__exportStar(__webpack_require__(7), exports);
-__exportStar(__webpack_require__(8), exports);
+__exportStar(__nested_webpack_require_773__(1), exports);
+__exportStar(__nested_webpack_require_773__(2), exports);
+__exportStar(__nested_webpack_require_773__(3), exports);
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 6 */
+/* 1 */
 /***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 //# sourceMappingURL=types.js.map
 
 /***/ }),
-/* 7 */
+/* 2 */
 /***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.rgbToHsl = exports.hslToRgb = exports.rgbToHex = void 0;
@@ -511,15 +524,14 @@ exports.rgbToHsl = rgbToHsl;
 //# sourceMappingURL=conversions.js.map
 
 /***/ }),
-/* 8 */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/* 3 */
+/***/ ((__unused_webpack_module, exports, __nested_webpack_require_4405__) => {
 
-"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseColor = exports.parseColorAndConvert = void 0;
-const htmlcolors_1 = __webpack_require__(9);
-const conversions_1 = __webpack_require__(7);
+const htmlcolors_1 = __nested_webpack_require_4405__(4);
+const conversions_1 = __nested_webpack_require_4405__(2);
 /**
  * Convert color to IConvertedColor
  * Supported format: 'hsla?' 'rgba?' 'hex{3,8}' number (0xFFFFFF[FF])
@@ -624,10 +636,9 @@ exports.parseColor = parseColor;
 //# sourceMappingURL=parsing.js.map
 
 /***/ }),
-/* 9 */
+/* 4 */
 /***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const colors = {
@@ -776,8 +787,48 @@ const colors = {
 exports.default = colors;
 //# sourceMappingURL=htmlcolors.js.map
 
+/***/ })
+/******/ 	]);
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __nested_webpack_require_11788__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __nested_webpack_require_11788__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = __nested_webpack_require_11788__(0);
+/******/ 	
+/******/ 	return __webpack_exports__;
+/******/ })()
+;
+});
+//# sourceMappingURL=urpflanze-color.js.map
+
 /***/ }),
-/* 10 */
+/* 6 */
 /***/ ((module) => {
 
 /**
@@ -890,10 +941,9 @@ module.exports = function bezier (mX1, mY1, mX2, mY2) {
 
 
 /***/ }),
-/* 11 */
+/* 7 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Easings": () => (/* binding */ Easings)
@@ -1346,10 +1396,9 @@ const Easings = {
 //# sourceMappingURL=Easings.js.map
 
 /***/ }),
-/* 12 */
+/* 8 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "resolveSimpleAnimation": () => (/* binding */ resolveSimpleAnimation),
@@ -1359,7 +1408,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Static": () => (/* binding */ Static),
 /* harmony export */   "UncontrolledLoop": () => (/* binding */ UncontrolledLoop)
 /* harmony export */ });
-/* harmony import */ var _composeAnimations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(13);
+/* harmony import */ var _composeAnimations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
 /* harmony import */ var _createAnimation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
 
 
@@ -1465,10 +1514,9 @@ function UncontrolledLoop(uncontrolledLoopAnimation) {
 //# sourceMappingURL=Animation.js.map
 
 /***/ }),
-/* 13 */
+/* 9 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "composeAnimations": () => (/* binding */ composeAnimations)
@@ -1552,7 +1600,7 @@ function interpolate(a, b, offset = 0.5) {
 /******/ 	};
 /******/ 
 /******/ 	// Execute the module function
-/******/ 	__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
 /******/ 
 /******/ 	// Return the exports of the module
 /******/ 	return module.exports;
@@ -1601,9 +1649,8 @@ function interpolate(a, b, offset = 0.5) {
 /******/ 
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "clock": () => (/* reexport safe */ _utilities__WEBPACK_IMPORTED_MODULE_1__.clock),
@@ -1627,8 +1674,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utilities__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
 /* harmony import */ var _createAnimation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
 /* harmony import */ var _createInterpolator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4);
-/* harmony import */ var _Easings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(11);
-/* harmony import */ var _Animation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(12);
+/* harmony import */ var _Easings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(7);
+/* harmony import */ var _Animation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(8);
 
 
 

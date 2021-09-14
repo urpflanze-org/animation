@@ -39,8 +39,8 @@ __exportStar(__webpack_require__(1), exports);
 __exportStar(__webpack_require__(2), exports);
 __exportStar(__webpack_require__(3), exports);
 __exportStar(__webpack_require__(4), exports);
-__exportStar(__webpack_require__(11), exports);
-__exportStar(__webpack_require__(12), exports);
+__exportStar(__webpack_require__(7), exports);
+__exportStar(__webpack_require__(8), exports);
 //# sourceMappingURL=index.js.map
 
 /***/ }),
@@ -308,8 +308,8 @@ function createUpdate(animation, bindedValues, animationFunction, interpolate) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createInterpolator = exports.createInterpolationCallback = void 0;
 const color_1 = __webpack_require__(5);
-const bezier_easing_1 = __webpack_require__(10);
-const Easings_1 = __webpack_require__(11);
+const bezier_easing_1 = __webpack_require__(6);
+const Easings_1 = __webpack_require__(7);
 const utilities_1 = __webpack_require__(2);
 /**
  * Return a callback for value interpolation passing offset from 0 to 1
@@ -414,9 +414,28 @@ exports.createInterpolator = createInterpolator;
 
 /***/ }),
 /* 5 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ ((module) => {
 
-"use strict";
+/*!
+ * @license Urpflanze Color v"0.0.5"
+ * urpflanze-color.js
+ *
+ * Github: https://github.com/urpflanze-org/color
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(true)
+		module.exports = factory();
+	else {}
+})(window, function() {
+return /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ([
+/* 0 */
+/***/ (function(__unused_webpack_module, exports, __nested_webpack_require_773__) {
+
 
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -429,25 +448,23 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__webpack_require__(6), exports);
-__exportStar(__webpack_require__(7), exports);
-__exportStar(__webpack_require__(8), exports);
+__exportStar(__nested_webpack_require_773__(1), exports);
+__exportStar(__nested_webpack_require_773__(2), exports);
+__exportStar(__nested_webpack_require_773__(3), exports);
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 6 */
+/* 1 */
 /***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 //# sourceMappingURL=types.js.map
 
 /***/ }),
-/* 7 */
+/* 2 */
 /***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.rgbToHsl = exports.hslToRgb = exports.rgbToHex = void 0;
@@ -540,15 +557,14 @@ exports.rgbToHsl = rgbToHsl;
 //# sourceMappingURL=conversions.js.map
 
 /***/ }),
-/* 8 */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/* 3 */
+/***/ ((__unused_webpack_module, exports, __nested_webpack_require_4405__) => {
 
-"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseColor = exports.parseColorAndConvert = void 0;
-const htmlcolors_1 = __webpack_require__(9);
-const conversions_1 = __webpack_require__(7);
+const htmlcolors_1 = __nested_webpack_require_4405__(4);
+const conversions_1 = __nested_webpack_require_4405__(2);
 /**
  * Convert color to IConvertedColor
  * Supported format: 'hsla?' 'rgba?' 'hex{3,8}' number (0xFFFFFF[FF])
@@ -653,10 +669,9 @@ exports.parseColor = parseColor;
 //# sourceMappingURL=parsing.js.map
 
 /***/ }),
-/* 9 */
+/* 4 */
 /***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const colors = {
@@ -805,8 +820,48 @@ const colors = {
 exports.default = colors;
 //# sourceMappingURL=htmlcolors.js.map
 
+/***/ })
+/******/ 	]);
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __nested_webpack_require_11788__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __nested_webpack_require_11788__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = __nested_webpack_require_11788__(0);
+/******/ 	
+/******/ 	return __webpack_exports__;
+/******/ })()
+;
+});
+//# sourceMappingURL=urpflanze-color.js.map
+
 /***/ }),
-/* 10 */
+/* 6 */
 /***/ ((module) => {
 
 /**
@@ -919,7 +974,7 @@ module.exports = function bezier (mX1, mY1, mX2, mY2) {
 
 
 /***/ }),
-/* 11 */
+/* 7 */
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -1374,14 +1429,14 @@ exports.Easings = {
 //# sourceMappingURL=Easings.js.map
 
 /***/ }),
-/* 12 */
+/* 8 */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.UncontrolledLoop = exports.Static = exports.Loop = exports.Compose = exports.Simple = exports.resolveSimpleAnimation = void 0;
-const composeAnimations_1 = __webpack_require__(13);
+const composeAnimations_1 = __webpack_require__(9);
 const createAnimation_1 = __webpack_require__(3);
 /**
  * Create animation from ISimpleAnimation.
@@ -1492,7 +1547,7 @@ exports.UncontrolledLoop = UncontrolledLoop;
 //# sourceMappingURL=Animation.js.map
 
 /***/ }),
-/* 13 */
+/* 9 */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
